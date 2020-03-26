@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "title": "Product one",
+    "description": "lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum",
+    "price": 100,
+    "quantity": 2,
+    "image": "fdskfhsdjfjsfjfs"
+  },
+  {
+    "id": 2,
+    "title": "Product two",
+    "description": "lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum",
+    "price": 200,
+    "quantity": 1,
+    "image": "l;jvghjsdodfajshdfakjd"
+  },
+  {
+    "id": 3,
+    "title": "Product three",
+    "description": "lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum",
+    "price": 400,
+    "quantity": 5,
+    "image": "tivhccivjhygvirgrj"
+  },
+  {
+    "id": 4,
+    "title": "Product four",
+    "description": "lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum lorem impsum",
+    "price": 150,
+    "quantity": 10,
+    "image": "oovucgyvxgvcxvoxvx"
+  }
+]
