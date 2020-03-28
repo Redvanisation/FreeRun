@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Cart from './components/cart/';
+import Store from './components/store';
+import CartProvider from './components/cart/CartProvider';
 
 ReactDOM.render(
-  <Cart />,
+  <CartProvider>
+    <Store />
+  </CartProvider>,
   document.getElementById('root')
 );
 
