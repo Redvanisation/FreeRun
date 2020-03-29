@@ -59,7 +59,7 @@ const Cart = () => {
             }
             }
           />
-          {console.log(cartCtx.cart)}
+          {/* {console.log(cartCtx.cart)} */}
           </td>
         </tr>
       </tbody>
