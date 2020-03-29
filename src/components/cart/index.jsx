@@ -18,6 +18,8 @@ const Cart = () => {
 
   const cartCtx = useContext(CartContext);
 
+  // console.log(cartCtx)
+
   return (
     <table>
       <thead>
@@ -31,22 +33,25 @@ const Cart = () => {
       </thead>
       <tbody>
         {
-          cartCtx.products.map(product => <tr key={product.id}>
+          cartCtx.cart.map(product => <tr key={product.id}>
             <td>{ product.title }</td>
             <td>{ product.description }</td>
             <td>{ product.quantity }</td>
             <td>{ formatPrice(product.price * product.quantity) }</td>
+            <button onClick={() => cartCtx.addMore(product)}>+</button>
+            <button onClick={() => cartCtx.subtractFromCart(product)}>-</button>
+            <button onClick={() => cartCtx.removeFromCart(product)}>remove from Cart</button>
           </tr>)
         }
         <tr>
           <td colSpan={3}>Total:</td>
-          <td>{`$${totalPrice(cartCtx.products)}`}</td>
+          <td>{`$${totalPrice(cartCtx.cart)}`}</td>
         </tr>
         <tr>
           <td colSpan={4}>
 
           <PayPalButton
-            amount={totalPrice(cartCtx.products)}
+            amount={totalPrice(cartCtx.cart)}
             shippingPreference='NO_SHIPPING'
             onSuccess={(details, data) => {
               console.log("Transaction completed by " + details.payer.name.given_name)
@@ -54,6 +59,7 @@ const Cart = () => {
             }
             }
           />
+          {console.log(cartCtx.cart)}
           </td>
         </tr>
       </tbody>

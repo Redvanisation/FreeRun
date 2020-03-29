@@ -1,0 +1,33 @@
+body,
+html {
+  margin: 0px;
+  padding: 0px;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 1000px;
+}
+
+.layout.top-bar {
+  margin: 0;
+  background: rgb(0, 0, 0);
+  color: white;
+}
+
+.layout.top-bar .wrapper {
+  display: flex;
+  padding: 16px 0;
+}
+
+.layout.top-bar .section {
+  flex: 50%;
+}
+
+.layout.top-bar a {
+  color: white;
+}
+
+.layout.top-bar .section:last-child {
+  text-align: right;
+}

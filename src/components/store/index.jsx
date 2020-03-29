@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import Cart from '../cart/';
 import { CartContext } from '../cart/CartProvider';
 import products from '../../helpers/products.json';
 
@@ -23,7 +22,6 @@ const Store = () => {
           </div>
         </div>)
       }
-      <Cart />
     </div>
   );
 }
