@@ -17,11 +17,10 @@ const CartProvider = ({ children }) => {
 
   const addMore = item => {
     const found = cart.find(pro => pro.title === item.title);
-    // const ind = cart.indexOf(found);
 
     if (found) {
       found.quantity++;
-      setCart(prev => prev.concat(found));
+      setCart(prev => [...prev, found])
     }
   }
 
@@ -59,11 +58,6 @@ const CartProvider = ({ children }) => {
     }, []);
   }
 
-  // const boo = cartWithQuantity(cart)
-
-  // console.log({cart, boo})
-
-
 
   return (
     <CartContext.Provider
@@ -73,7 +67,7 @@ const CartProvider = ({ children }) => {
         addToCart,
         removeFromCart,
         subtractFromCart,
-        addMore
+        addMore,
       }}
     >
       {/* {console.log(cart)} */}
