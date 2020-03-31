@@ -10,7 +10,7 @@ const Store = () => {
   
   const handleClick = (product, ctx) => {
       ctx.addToCart(product);
-      ctx.quantityCount('+')
+      // ctx.quantityCount('+')
     
     }
 

@@ -20,7 +20,6 @@ const Cart = () => {
 
   const cartCtx = useContext(CartContext);
 
-  // console.log(cartCtx)
 
   return (
     <table>
@@ -40,9 +39,9 @@ const Cart = () => {
             <td>{ product.description }</td>
             <td>{ product.quantity }</td>
             <td>{ formatPrice(product.price * product.quantity) }</td>
-            {/* <button onClick={() => cartCtx.addMore(product)}>+</button>
+            <button onClick={() => cartCtx.addToCart(product)}>+</button>
             <button onClick={() => cartCtx.subtractFromCart(product)}>-</button>
-            <button onClick={() => cartCtx.removeFromCart(product)}>remove from Cart</button> */}
+            <button onClick={() => cartCtx.removeFromCart(product)}>remove from Cart</button>
           </tr>)
         }
         <tr>
