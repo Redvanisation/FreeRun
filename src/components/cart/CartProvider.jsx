@@ -1,10 +1,19 @@
 import React, { useState, createContext } from 'react';
+import useLocalStorage from '../../hooks/useLocalStorage';
+import { saveToStorage } from '../../helpers/helpers';
+
 
 export const CartContext = createContext(null);
 
 const CartProvider = ({ children }) => {
+
+  // const [storeCart, setStoreCart] = useLocalStorage('Cart', {})
   
-  const [cart, setCart] = useState([]);
+  // const [cart, setCart] = useLocalStorage([]);
+
+  // const reduceCart = () => {
+    
+  // }
 
   const addToCart = item => {
     if (item.quantity) {
@@ -13,6 +22,8 @@ const CartProvider = ({ children }) => {
       item.quantity = 1
     }
     setCart(prevState => [...prevState, item]);
+
+    console.log({cart, item})
   };
 
   const addMore = item => {
@@ -58,6 +69,15 @@ const CartProvider = ({ children }) => {
     }, []);
   }
 
+  // const storeTheCart = item => {
+  //     setStoreCart(item)
+
+  // }
+
+  // const boo = cartWithQuantity(cart);
+
+  // setStoreCart(boo)
+
 
   return (
     <CartContext.Provider
@@ -68,8 +88,10 @@ const CartProvider = ({ children }) => {
         removeFromCart,
         subtractFromCart,
         addMore,
+        // storeTheCart,
       }}
     >
+      {/* {storeTheCart(cartWithQuantity(cart))} */}
       {/* {console.log(cart)} */}
       {children}
     </CartContext.Provider>

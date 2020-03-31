@@ -1,20 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import CartProvider from './components/cart/CartProvider';
+import CartProv from './components/cart/CartProv';
+// import CartProvider from './components/cart/CartProvider';
 import ProductsPage from './pages/ProductsPage';
 import CartPage from './pages/CartPage';
 import './stylesheets/main.scss';
 
 ReactDOM.render(
   <BrowserRouter>
-    <CartProvider>
+    <CartProv>
       <Switch>
         <Route exact path='/' component={ProductsPage} />
         <Route exact path='/cart' component={CartPage} />
         {/* <Route path="/cart" render={(props) => <CartPage {...props} />} /> */}
       </Switch>
-    </CartProvider>
+    </CartProv>
   </BrowserRouter>,
   document.getElementById('root')
 );

@@ -1,10 +1,18 @@
-import React, { useContext } from 'react';
-import { CartContext } from '../cart/CartProvider';
+import React, { useState, useContext } from 'react';
+// import { CartContext } from '../cart/CartProvider';
+import { CartContext } from '../cart/CartProv';
 import products from '../../helpers/products.json';
 
-const Store = () => {
 
+const Store = () => {
+  
   const cartCtx = useContext(CartContext);
+  
+  const handleClick = (product, ctx) => {
+      ctx.addToCart(product);
+      ctx.quantityCount('+')
+    
+    }
 
   return (
     <div>
@@ -16,7 +24,7 @@ const Store = () => {
           <p>{product.price}</p>
           {/* <p>{product.description}</p> */}
           <div>
-            <button onClick={() => cartCtx.addToCart(product)}>
+            <button onClick={() => handleClick(product, cartCtx)}>
               Add to cart
             </button>
           </div>

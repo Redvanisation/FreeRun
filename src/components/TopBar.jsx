@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { CartContext } from '../components/cart/CartProvider';
+import { CartContext } from '../components/cart/CartProv';
 
 const TopBar = () => {
 
@@ -14,6 +14,7 @@ const TopBar = () => {
         <div className="section">
           <Link to='/'>Products</Link>
           <Link to='/cart'>View Cart ({numItems})</Link>
+          {console.log(numItems)}
         </div>
       </div>
     </div>

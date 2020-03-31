@@ -1,7 +1,9 @@
 import React, { useContext } from 'react';
-// import products from '../../helpers/products.json';
+import products from '../../helpers/products.json';
 import { PayPalButton } from "react-paypal-button-v2";
-import { CartContext } from './CartProvider';
+import { CartContext } from './CartProv';
+// import useLocalStorage from '../../hooks/useLocalStorage';
+
 
 
 
@@ -38,9 +40,9 @@ const Cart = () => {
             <td>{ product.description }</td>
             <td>{ product.quantity }</td>
             <td>{ formatPrice(product.price * product.quantity) }</td>
-            <button onClick={() => cartCtx.addMore(product)}>+</button>
+            {/* <button onClick={() => cartCtx.addMore(product)}>+</button>
             <button onClick={() => cartCtx.subtractFromCart(product)}>-</button>
-            <button onClick={() => cartCtx.removeFromCart(product)}>remove from Cart</button>
+            <button onClick={() => cartCtx.removeFromCart(product)}>remove from Cart</button> */}
           </tr>)
         }
         <tr>
