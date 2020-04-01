@@ -46,6 +46,11 @@ const CartProv = ({ children }) => {
     }
   }
 
+  const clearCart = () => {
+    setCart([]);
+    setQuantity(0);
+  }
+
   
   const quantityCount = (action, item) => {
     switch(action) {
@@ -71,6 +76,7 @@ const CartProv = ({ children }) => {
         subtractFromCart,
         removeFromCart,
         quantityCount,
+        clearCart,
       }}
     >
     {children}

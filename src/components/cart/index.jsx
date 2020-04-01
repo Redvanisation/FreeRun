@@ -47,6 +47,9 @@ const Cart = () => {
         <tr>
           <td colSpan={3}>Total:</td>
           <td>{`$${totalPrice(cartCtx.cart)}`}</td>
+          <td>
+            <button onClick={() => cartCtx.clearCart()}>Clear Cart</button>
+          </td>
         </tr>
         <tr>
           <td colSpan={4}>
