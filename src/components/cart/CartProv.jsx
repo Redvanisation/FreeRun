@@ -1,5 +1,5 @@
 import React, { useState, createContext } from 'react';
-import { saveToStorage } from '../../helpers/helpers';
+// import { saveToStorage } from '../../helpers/helpers';
 import useLocalStorage from '../../hooks/useLocalStorage';
 
 
@@ -10,7 +10,7 @@ export const CartContext = createContext(null);
 const CartProv = ({ children }) => {
 
   const [cart, setCart] = useLocalStorage('Cart', []);
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useLocalStorage('quantity', 0);
 
   const addToCart = item => {
     if (cart.includes(item)) {
