@@ -28,7 +28,7 @@ const CartProv = ({ children }) => {
   }
 
   const removeFromCart = item => {
-    setCart(cart.filter(product => product.title !== item.title));
+    setCart(cart.filter(product => product.name !== item.name));
     quantityCount('REMOVE', item);
   }
 

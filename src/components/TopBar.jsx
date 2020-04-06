@@ -13,8 +13,9 @@ const TopBar = () => {
         <div className="section">My Store</div>
         <div className="section">
           <Link to='/'>Products</Link>
+          <Link to='/add'>ADD</Link>
           <Link to='/cart'>View Cart ({numItems})</Link>
-          {console.log(numItems)}
+          {/* {console.log(numItems)} */}
         </div>
       </div>
     </div>

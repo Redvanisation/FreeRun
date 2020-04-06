@@ -35,7 +35,7 @@ const Cart = () => {
       <tbody>
         {
           cartCtx.cart.map(product => <tr key={product.id}>
-            <td>{ product.title }</td>
+            <td>{ product.name }</td>
             <td>{ product.description }</td>
             <td>{ product.quantity }</td>
             <td>{ formatPrice(product.price * product.quantity) }</td>
@@ -59,11 +59,9 @@ const Cart = () => {
             shippingPreference='NO_SHIPPING'
             onSuccess={(details, data) => {
               console.log("Transaction completed by " + details.payer.name.given_name)
-              console.log('address' + details.payer.address)
             }
             }
           />
-          {/* {console.log(cartCtx.cart)} */}
           </td>
         </tr>
       </tbody>
