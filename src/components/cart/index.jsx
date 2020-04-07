@@ -1,18 +1,44 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { CartContext } from './CartProv';
 import { PayPalButton } from "react-paypal-button-v2";
 import { formatPrice, totalPrice } from '../../helpers/';
+import axios from 'axios';
 
 
-const Cart = () => {
+const Cart = ({ history }) => {
 
   const cartCtx = useContext(CartContext);
+
+  const updateItemStock = item => {
+    item.stock = item.stock - item.quantity;
+    axios({
+      method: 'put',
+      url: `http://localhost:3000/api/products/${item.id}`,
+      data: {
+        id: item.id,
+        stock: item.stock,
+      },
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      mode: 'cors',
+    })
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+  }
+
+  const updateCartStock = cart => {
+    cart.forEach(item => {
+      updateItemStock(item);
+    })
+  }
 
 
   return (
     <>
     { cartCtx.cart.length > 0 ?
-          <table>
+        <table>
           <thead>
             <tr>
               <th>Image</th>
@@ -48,12 +74,19 @@ const Cart = () => {
             </tr>
             <tr>
               <td colSpan={4}>
-    
+              {/* <button onClick={() => {
+                updateCartStock(cartCtx.cart)
+                cartCtx.clearCart();
+                history.push('/');
+              }}>PAY!</button> */}
               <PayPalButton
                 amount={totalPrice(cartCtx.cart)}
                 shippingPreference='NO_SHIPPING'
                 onSuccess={(details, data) => {
+                  updateCartStock(cartCtx.cart);
                   console.log("Transaction completed by " + details.payer.name.given_name)
+                  cartCtx.clearCart();
+                  history.push('/');
                 }
                 }
               />

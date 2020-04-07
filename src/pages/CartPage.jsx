@@ -2,10 +2,10 @@ import React from 'react';
 import Layout from '../containers/Layout';
 import Cart from '../components/cart';
 
-const CartPage = () => {
+const CartPage = (props) => {
   return (
     <Layout title='Your Cart'>
-        <Cart  />
+        <Cart history={props.history} />
     </Layout>
   );
 }
