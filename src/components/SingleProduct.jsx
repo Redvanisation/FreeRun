@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import {CartContext} from './cart/CartProv';
+import { formatPrice } from '../helpers/';
 
 
 const SingleProduct = ({ product }) => {
@@ -13,10 +14,10 @@ const SingleProduct = ({ product }) => {
 
   return (
     <>
-      {/* <img src={product.image.url} alt="product image" width="400" height="400" /> */}
+      <img src={product.image.url} alt="product image" width="400" height="400" />
       <h3>{product.name}</h3>
       <p>{product.description}</p>
-      <p>{product.price}</p>
+      <p>{formatPrice(product.price)}</p>
       <div>
         <button onClick={() => handleClick(product, cartCtx)}>
           Add to cart

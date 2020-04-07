@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 // import { CartContext } from '../cart/CartProv';
 import axios from 'axios';
+import { formatPrice } from '../../helpers/';
 
 
 const Store = () => {
@@ -23,10 +24,7 @@ const Store = () => {
     setIsLoading(false);
     fetchData();
   }, []);
-  
-  // const handleClick = (product, ctx) => {
-  //   ctx.addToCart(product);
-  // }
+
 
   return (
       <div>
@@ -39,12 +37,8 @@ const Store = () => {
               : null
             }
             <h3>{product.name}</h3>
-            <p>{product.price}</p>
-            {/* <div>
-              <button onClick={() => handleClick(product, cartCtx)}>
-                Add to cart
-              </button>
-            </div> */}
+            <p>{formatPrice(product.price)}</p>
+
           </Link>)
         }
       </div>

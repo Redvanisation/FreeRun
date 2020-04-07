@@ -1,20 +1,8 @@
 import React, { useContext } from 'react';
-import products from '../../helpers/products.json';
-import { PayPalButton } from "react-paypal-button-v2";
 import { CartContext } from './CartProv';
-// import useLocalStorage from '../../hooks/useLocalStorage';
+import { PayPalButton } from "react-paypal-button-v2";
+import { formatPrice, totalPrice } from '../../helpers/';
 
-
-
-
-const formatPrice = price => (
-  `$${(price * 0.1).toFixed(2)}`
-);
-
-const totalPrice = items => {
-  const boo = items.reduce((acc, item) => acc + item.quantity * item.price, 0.0);
-  return (boo * 0.1).toFixed(2);
-}
 
 const Cart = () => {
 
