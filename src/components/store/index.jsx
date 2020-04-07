@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { CartContext } from '../cart/CartProv';
+import { Link } from 'react-router-dom';
+// import { CartContext } from '../cart/CartProv';
 import axios from 'axios';
 
-const Store = () => {
 
-  const cartCtx = useContext(CartContext);
+const Store = () => {
+  
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -28,25 +29,25 @@ const Store = () => {
   // }
 
   return (
-    <div>
-      {isLoading ? null :
-        products.map(product => 
-        <div className="product-card" key={product.id}>
-          {
-            product.image ?
-            <img src={product.image.url} alt="product image" width="400" height="400" />
-            : null
-          }
-          <h3>{product.name}</h3>
-          <p>{product.price}</p>
-          {/* <div>
-            <button onClick={() => handleClick(product, cartCtx)}>
-              Add to cart
-            </button>
-          </div> */}
-        </div>)
-      }
-    </div>
+      <div>
+        {isLoading ? null :
+          products.map(product => 
+          <Link to={{pathname: `/products/${product.id}`, product: product}} className="product-card" key={product.id}>
+            {
+              product.image ?
+              <img src={product.image.url} alt="product image" width="400" height="400" />
+              : null
+            }
+            <h3>{product.name}</h3>
+            <p>{product.price}</p>
+            {/* <div>
+              <button onClick={() => handleClick(product, cartCtx)}>
+                Add to cart
+              </button>
+            </div> */}
+          </Link>)
+        }
+      </div>
   );
 }
 

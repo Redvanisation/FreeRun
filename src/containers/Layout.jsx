@@ -2,7 +2,7 @@ import React from 'react';
 import TopBar from '../components/TopBar';
 
 
-const Layout = ({ children, title }) => {
+const Layout = ({ children, title}) => {
   
   document.getElementsByTagName('title')[0].innerHTML = title;
   

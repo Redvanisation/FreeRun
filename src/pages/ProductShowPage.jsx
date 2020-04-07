@@ -1,11 +1,12 @@
 import React from 'react';
 import Layout from '../containers/Layout';
+import SingleProduct from '../components/SingleProduct';
 
 
-const ProductShowPage = () => {
+const ProductShowPage = ({ location }) => {
   return (
-    <Layout title='Product show page'>
-      <h2>Show page</h2>
+    <Layout title={location.product.name}>
+      <SingleProduct product={location.product} />
     </Layout>
   );
 }

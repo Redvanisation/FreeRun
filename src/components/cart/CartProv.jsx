@@ -1,5 +1,4 @@
-import React, { useState, createContext } from 'react';
-// import { saveToStorage } from '../../helpers/helpers';
+import React, { createContext } from 'react';
 import useLocalStorage from '../../hooks/useLocalStorage';
 
 
