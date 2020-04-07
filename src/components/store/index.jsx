@@ -29,17 +29,22 @@ const Store = () => {
   return (
       <div>
         {isLoading ? null :
-          products.map(product => 
-          <Link to={{pathname: `/products/${product.id}`, product: product}} className="product-card" key={product.id}>
-            {
-              product.image ?
-              <img src={product.image.url} alt="product image" width="400" height="400" />
-              : null
-            }
-            <h3>{product.name}</h3>
-            <p>{formatPrice(product.price)}</p>
+          products.map(product => {
+              if (product.stock > 0) {
+                return (
+                  <Link to={{pathname: `/products/${product.id}`, product: product}} className="product-card" key={product.id}>
+                    {
+                      product.image ?
+                      <img src={product.image.url} alt="product image" width="400" />
+                      : null
+                    }
+                    <h3>{product.name}</h3>
+                    <p>{formatPrice(product.price)}</p>
 
-          </Link>)
+                  </Link>
+                )
+              }
+          })
         }
       </div>
   );

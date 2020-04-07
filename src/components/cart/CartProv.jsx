@@ -13,17 +13,22 @@ const CartProv = ({ children }) => {
 
   const addToCart = item => {
     if (cart.includes(item)) {
-      item.quantity++;
-      setCart(prevState => {
-        const ind = prevState.indexOf(item);
-        prevState[ind] = item;
-        return prevState;
-      });
+      if (item.quantity < item.stock) {
+        item.quantity++;
+        setCart(prevState => {
+          const ind = prevState.indexOf(item);
+          prevState[ind] = item;
+          quantityCount('+');
+          return prevState;
+        });
+      } else {
+        alert(`Sorry! we only have ${item.stock} units of this item...`);
+      }
     } else {
       item.quantity = 1;
       setCart(prevState => [...prevState, item]);
+      quantityCount('+');
     }
-    quantityCount('+');
   }
 
   const removeFromCart = item => {
