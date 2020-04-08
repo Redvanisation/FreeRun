@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { CartContext } from './CartProv';
 import { PayPalButton } from "react-paypal-button-v2";
 import { formatPrice, totalPrice } from '../../helpers/';
@@ -8,9 +8,13 @@ import axios from 'axios';
 const Cart = ({ history }) => {
 
   const cartCtx = useContext(CartContext);
+  const [isLoading, setIsLoading] = useState(false);
 
   const updateItemStock = item => {
-    item.stock = item.stock - item.quantity;
+    item.stock -= item.quantity;
+    
+    setIsLoading(true);
+    
     axios({
       method: 'put',
       url: `http://localhost:3000/api/products/${item.id}`,
@@ -24,7 +28,10 @@ const Cart = ({ history }) => {
       },
       mode: 'cors',
     })
-      .then(res => console.log(res))
+      .then(res => {
+        setIsLoading(false);
+        console.log(res);
+      })
       .catch(err => console.log(err));
   }
 
@@ -32,6 +39,11 @@ const Cart = ({ history }) => {
     cart.forEach(item => {
       updateItemStock(item);
     })
+  }
+
+  const success = () => {
+    cartCtx.clearCart();
+    history.push('/');
   }
 
 
@@ -83,10 +95,15 @@ const Cart = ({ history }) => {
                 amount={totalPrice(cartCtx.cart)}
                 shippingPreference='NO_SHIPPING'
                 onSuccess={(details, data) => {
-                  updateCartStock(cartCtx.cart);
-                  console.log("Transaction completed by " + details.payer.name.given_name)
-                  cartCtx.clearCart();
-                  history.push('/');
+                  updateCartStock(cartCtx.cart)
+                  
+                  isLoading ? 
+                    console.log('PROCESSING.....')
+                  :
+                    setTimeout(() => {
+                        alert("Transaction completed by " + details.payer.name.given_name)
+                        success();
+                      }, 1000)
                 }
                 }
               />

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 // import { CartContext } from '../cart/CartProv';
 import axios from 'axios';
-import { formatPrice } from '../../helpers/';
+import { formatPrice, fetchData } from '../../helpers/';
 
 
 const Store = () => {
@@ -12,10 +12,14 @@ const Store = () => {
 
 
   useEffect(() => {
+    // fetch('http://localhost:3000/api/products')
+    //   .then(res => res.json())
+    //   .then(data => setProducts(data));
     const fetchData = async () => {
       const response = await axios.get('http://localhost:3000/api/products');
       setProducts(response.data);
     }
+    // fetchData('http://localhost:3000/api/products',  setProducts);
     
     setIsLoading(false);
     fetchData();
@@ -35,6 +39,7 @@ const Store = () => {
                       : null
                     }
                     <h3>{product.name}</h3>
+                    <h4>{ product.stock }</h4>
                     <p>{formatPrice(product.price)}</p>
 
                   </Link>
