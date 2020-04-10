@@ -1,0 +1,16 @@
+.quantity {
+  display: flex;
+  justify-content: center;
+  margin: .5rem 0;
+
+  &__btn {
+    border-radius: 3px;
+  }
+
+  &__number {
+    background-color: rgba(211, 211, 211, 0.623);
+    padding: .5rem 1.5rem;
+    font-weight: bold;
+    
+  }
+}

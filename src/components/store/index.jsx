@@ -26,28 +26,39 @@ const Store = () => {
   }, []);
 
 
-  return (
-      <div>
-        {isLoading ? null :
-          products.map(product => {
-              if (product.stock > 0) {
-                return (
-                  <Link to={{pathname: `/products/${product.id}`, product: product}} className="product-card" key={product.id}>
-                    {
-                      product.image ?
-                      <img src={product.image.url} alt="product image" width="400" />
-                      : null
-                    }
-                    <h3>{product.name}</h3>
-                    <h4>{ product.stock }</h4>
-                    <p>{formatPrice(product.price)}</p>
 
-                  </Link>
-                )
-              }
-          })
-        }
-      </div>
+
+
+
+  return (
+      <div className="columns is-multiline is-vcentered is-centered">
+        {isLoading ? null :
+            products.map(product => {
+                if (product.stock > 0) {
+                  return (
+                  <div class="card column is-one-quarter">
+                    <Link to={{pathname: `/products/${product.id}`, product: product}} key={product.id}>
+                      <div class="card-image">
+                        <figure class="image is-4by3">
+                          <img src={product.image.url} alt={product.name} style={{'max-width': '100%'}} />
+                        </figure>
+                      </div>
+                      <div class="card-content">
+                        <div class="media">
+
+                          <div class="media-content has-text-centered">
+                            <p class="title is-5">{product.name}</p>
+                            <p class="subtitle is-6">{formatPrice(product.price)}</p>
+                            {/* <p class="subtitle is-6">{product.stock}</p> */}
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                  )
+                }
+            })}
+    </div>
   );
 }
 

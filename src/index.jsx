@@ -6,6 +6,7 @@ import ProductsPage from './pages/ProductsPage';
 import ProductShowPage from './pages/ProductShowPage';
 import CartPage from './pages/CartPage';
 import AddProductPage from './pages/AddProductPage';
+import 'bulma';
 import './stylesheets/main.scss';
 
 ReactDOM.render(

@@ -1,9 +1,48 @@
+*,
+body,
+html {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
 
+.wrapper {
+  // margin: 2rem auto;
+}
 
-.product-card {
-  display: inline-block;
-  border: 1px solid black;
-  width: 400px;
-  padding: 1rem 2rem;
-  margin: 1rem;
+.column {
+  margin: .5rem;
+  transition: all .2s;;
+}
+
+.white-title {
+  color: #fff;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.is-vertical-center {
+  display: flex;
+  align-items: center;
+}
+
+.is-vertical-center-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.has-rows {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.is-flex {
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+  margin: 0 auto;
 }

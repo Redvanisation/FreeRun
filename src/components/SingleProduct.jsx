@@ -13,17 +13,22 @@ const SingleProduct = ({ product }) => {
 
 
   return (
-    <>
-      <img src={product.image.url} alt="product image" width="400" height="400" />
-      <h3>{product.name}</h3>
-      <p>{product.description}</p>
-      <p>{formatPrice(product.price)}</p>
-      <div>
-        <button onClick={() => handleClick(product, cartCtx)}>
-          Add to cart
-        </button>
+    <div className="columns">
+      <div className="column is-half is-offset-1">
+        <img src={product.image.url} alt="product image" />
       </div>
-    </>
+
+      <div className="column has-text-centered is-vertical-center-col">
+        <h3 className="title is-4">{product.name}</h3>
+        <p className="subtitle">{product.description}</p>
+        <p className="subtitle">{formatPrice(product.price)}</p>
+        <div>
+          <button className="button" onClick={() => handleClick(product, cartCtx)}>
+            Add to cart
+          </button>
+        </div>
+      </div>
+    </div>
   );
 }
 

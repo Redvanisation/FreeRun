@@ -4,13 +4,13 @@ import TopBar from '../components/TopBar';
 
 const Layout = ({ children, title}) => {
   
-  document.getElementsByTagName('title')[0].innerHTML = title;
+  // document.getElementsByTagName('title')[0].innerHTML = title;
   
   return (
     <>
       <TopBar />
       <div className="wrapper">
-        <h1>{title}</h1>
+        {/* <h1>{title}</h1> */}
         {children}
       </div>
     </>
