@@ -1,7 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { CartContext } from './CartProv';
 import { PayPalButton } from "react-paypal-button-v2";
-import { formatPrice, totalPrice } from '../../helpers/';
+import { formatPrice, calculateTax, calculateSubtotal, calculateTotalPrice } from '../../helpers/';
 import axios from 'axios';
 import Quantity from '../Quantity';
 
@@ -9,7 +9,17 @@ import Quantity from '../Quantity';
 const Cart = ({ history }) => {
 
   const cartCtx = useContext(CartContext);
+
   const [isLoading, setIsLoading] = useState(false);
+  const [subtotal, setSubtotal] = useState(0);
+  const [tax, setTax] = useState(0);
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    calculateSubtotal(cartCtx.cart);
+    calculateTax();
+    calculateTotalPrice();
+  })
 
   const updateItemStock = item => {    
     setIsLoading(true);
@@ -40,6 +50,19 @@ const Cart = ({ history }) => {
     })
   }
 
+  const calculateSubtotal = items => {
+    const result = items.reduce((acc, item) => acc + item.quantity * item.price, 0.0);
+    setSubtotal(result);
+  };
+  
+  const calculateTax = () => (
+    setTax((subtotal * 8.49 / 100).toFixed(2))
+  );
+  
+  const calculateTotalPrice = () => {
+    setTotal(Number(subtotal) + Number(tax));
+  };
+
   const success = () => {
     cartCtx.clearCart();
     history.push('/');
@@ -57,15 +80,10 @@ const Cart = ({ history }) => {
                 <img src={product.image.url} alt={product.name} />
               </div>
               <div className="column has-text-centered">
-                <h4 className="title is-5">{product.name}</h4>
+                <h4 className="title is-4">{product.name}</h4>
                 <h4 className="title is-6">{formatPrice(product.price * product.quantity)}</h4>
                 <Quantity product={product} add={cartCtx.addToCart} subtract={cartCtx.subtractFromCart} 
                   remove={cartCtx.removeFromCart} />
-{/* 
-                <h5 className="title is-6">{product.quantity}</h5>
-                <button className="button" onClick={() => cartCtx.addToCart(product)}>+</button>
-                <button className="button" onClick={() => cartCtx.subtractFromCart(product)}>-</button> */}
-                {/* <button className="button" onClick={() => cartCtx.removeFromCart(product)}>remove from Cart</button> */}
               </div>
             </div>
             )
@@ -78,29 +96,30 @@ const Cart = ({ history }) => {
       </div>
 
 
-      <div className="column  has-text-centered ">
-        <h3 className="column title ">Summary</h3>
-        <div className=" is-flex">
-          <h5 className="title is-6 left-half">Subtotal</h5>
-          <p className="right-half">...$</p>
+      <div className="column has-text-centered">
+        <h3 className="column title">Summary</h3>
+        <div className="is-flex cart__summary">
+          <h5 className="is-bold is-6">Subtotal</h5>
+          <p className="">{formatPrice(subtotal)}</p>
         </div>
         <div className="is-flex">
-          <h5 className="title is-6 left-half">Shipping</h5>
-          <p className="right-half">...$</p>
+          <h5 className="is-bold is-6">Shipping</h5>
+          <p className="">FREE</p>
         </div>
         <div className="is-flex">
-          <h5 className="title is-6 left-half">Tax</h5>
-          <p className="right-half">...$</p>
+          <h5 className="is-bold is-6">Tax</h5>
+          <p className="">{`$${tax}`}</p>
         </div>
+        <hr className="cart__hr"/>
         <div className="is-flex">
-          <h5 className="title is-5">Total</h5>
-          <p className="title is-5 right-half">{`$${totalPrice(cartCtx.cart)}`}</p>
+          <h5 className="title is-5 cart__total">Total</h5>
+          <p className="title is-5 ">{formatPrice(total)}</p>
         </div>
         <div className="column">
           <div className="is-4">
-            <button className="button" onClick={() => cartCtx.clearCart()}>Clear Cart</button>
+            <button className="button cart__btn" onClick={() => cartCtx.clearCart()}>Clear Cart</button>
             <PayPalButton
-                  amount={totalPrice(cartCtx.cart)}
+                  amount={total}
                   shippingPreference='NO_SHIPPING'
                   onSuccess={(details, data) => {
                     updateCartStock(cartCtx.cart)
@@ -114,6 +133,7 @@ const Cart = ({ history }) => {
                         }, 1000)
                     }
                   }
+                  color='black'
               />
           </div>
         </div>

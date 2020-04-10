@@ -1,8 +1,26 @@
 .cart {
 
+  &__summary {
+    margin-top: 2rem;
+  }
+
   &__card {
-    border: 1px solid gray;
+    border: 1px solid $color-gray-light;
     border-radius: 5px;
     padding: 2rem .5rem;
+  }
+
+  &__btn {
+    border-radius: 3px;
+    margin-bottom: 1rem;
+  }
+
+  &__hr {
+    width: 80%;
+    margin: .5rem auto;
+  }
+
+  &__total {
+    text-transform: uppercase;
   }
 }
