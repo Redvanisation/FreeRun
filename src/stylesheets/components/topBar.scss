@@ -1,7 +1,49 @@
-// .top-bar {
-//   color: white !important;
+.top-bar {
+  background-color: $color-blue-dark;
+  &__item {
 
-// }
-// a {
-//   color: white !important;
-// }
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: rgba($color-primary, .1) !important;
+    }
+  }
+
+  &__link,
+  &__title {
+    color: $color-white !important;
+  }
+
+  &__link {
+    &--burger {
+      color: $color-white;
+    }
+  }
+  
+
+  &__icon {
+    position: relative;
+    top: 6px;
+    font-size: 1.5rem;
+    &--number {
+      display: inline-block;
+      position: relative;
+      margin: 5px;
+    }
+  }
+
+}
+
+
+@media only screen and (max-width: 1023px) {
+  .top-bar {
+  
+    &__item {
+      text-align: center;
+    }
+  
+    &__link {
+      color: $color-blue-dark !important;
+    }
+  }
+}

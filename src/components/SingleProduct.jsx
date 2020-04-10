@@ -13,15 +13,16 @@ const SingleProduct = ({ product }) => {
 
 
   return (
-    <div className="columns">
-      <div className="column is-half is-offset-1">
-        <img src={product.image.url} alt="product image" />
+    <div className="columns single-product">
+      <div className="column is-three-fifths single-product__image-div">
+        <img src={product.image.url} alt={product.name} />
       </div>
 
-      <div className="column has-text-centered is-vertical-center-col">
-        <h3 className="title is-4">{product.name}</h3>
-        <p className="subtitle">{product.description}</p>
-        <p className="subtitle">{formatPrice(product.price)}</p>
+      <div className="column has-text-centered is-vertical-center-col single-product__text-div">
+        <h3 className="title is-4 single-product__text-div--item">{product.name}</h3>
+        <hr/>
+        <p className="subtitle single-product__text-div--item">{product.description}</p>
+        <p className="title is-4 single-product__text-div--item">{formatPrice(product.price)}</p>
         <div>
           <button className="button" onClick={() => handleClick(product, cartCtx)}>
             Add to cart

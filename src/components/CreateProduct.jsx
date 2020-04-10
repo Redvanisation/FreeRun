@@ -32,7 +32,8 @@ const CreateProduct = () => {
   return (
     <form onSubmit={handleSubmit}>
       <input type="text" name='name' placeholder='name' required />
-      <input type="text" name='description' placeholder='description' required />
+      {/* <input type="text" name='description' placeholder='description' required /> */}
+      <textarea name="description" cols="40" rows="10"></textarea>
       <input type="number" name='price' placeholder='price' required />
       <input type="text" name='category' placeholder='category' required />
       <input type="number" name='stock'placeholder='stock' required />

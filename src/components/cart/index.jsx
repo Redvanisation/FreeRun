@@ -91,7 +91,7 @@ const Cart = ({ history }) => {
           
           )
           :
-          <h2>Your Cart is empty</h2>
+          <h2 className="has-text-centered subtitle is-6">Your Cart is empty</h2>
         }
       </div>
 

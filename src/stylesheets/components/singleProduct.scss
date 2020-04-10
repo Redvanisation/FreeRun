@@ -1,0 +1,26 @@
+.single-product {
+  padding: 1rem 5rem;
+
+  &__image-div {
+    padding: 8rem;
+  }
+
+  &__text-div {
+
+    &--item {
+      display: inline-block;
+      margin-bottom: 3rem !important;
+    }
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+  .single-product {
+    margin-top: 2rem;
+    padding: 1rem;
+    &__image-div {
+      padding: 3rem;
+    }
+  }
+}

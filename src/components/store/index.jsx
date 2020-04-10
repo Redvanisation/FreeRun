@@ -48,8 +48,7 @@ const Store = () => {
 
                           <div class="media-content has-text-centered">
                             <p class="title is-5">{product.name}</p>
-                            <p class="subtitle is-6">{formatPrice(product.price)}</p>
-                            {/* <p class="subtitle is-6">{product.stock}</p> */}
+                            <p class="subtitle is-6 is-bold">{formatPrice(product.price)}</p>
                           </div>
                         </div>
                       </div>

@@ -1,10 +1,12 @@
-.column {
+.card {
+  margin-top: 2rem;
+}
 
-  // &__image {
-  //   width: 10% !important;
-  // }
+.card-image {
+  max-width: 80%;
+  margin: 0 auto;
+}
 
-  // &__item {
-  //   color: red !important;
-  // }
+.media-content > p:not(:last-child) {
+  margin-bottom: 3rem ;
 }
