@@ -31,7 +31,9 @@ const Store = () => {
 
 
   return (
-      <div className="columns is-multiline is-vcentered is-centered card-container" id="store">
+    <>
+      <h2 className="title is-1 has-text-centered is-uppercase big-title" id="store">Our Sneakers</h2>
+      <div className="columns is-multiline is-vcentered is-centered card-container">
         {isLoading ? null :
             products.map(product => {
                 if (product.stock > 0) {
@@ -39,7 +41,7 @@ const Store = () => {
                   <div className="card column is-one-quarter" key={product.id}>
                     <Link to={{pathname: `/products/${product.id}`, product: product}} key={product.id}>
                       <div className="card-image">
-                        <figure className="image is-4by3">
+                        <figure className="image">
                           <img src={product.image.url} alt={product.name} />
                         </figure>
                       </div>
@@ -57,7 +59,8 @@ const Store = () => {
                   )
                 }
             })}
-    </div>
+      </div>
+    </>
   );
 }
 

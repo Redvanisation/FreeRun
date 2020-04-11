@@ -18,6 +18,10 @@ html {
   margin: .5rem;
 }
 
+.big-title {
+  letter-spacing: 3px;
+}
+
 .is-vertical-center {
   display: flex;
   align-items: center;
@@ -55,4 +59,12 @@ html {
 hr {
   width: 80%;
   margin: .5rem auto;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .big-title {
+    font-size: 2.5rem !important;
+    letter-spacing: 1px;
+  }
 }

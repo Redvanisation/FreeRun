@@ -4,7 +4,17 @@
 
 .card {
   margin-top: 2rem;
-  // width: 50%;
+  height: 400px;
+  padding: 1rem;
+  padding-top: 3rem;
+}
+
+.card-image {
+  height: 50%;
+}
+
+.card-content {
+  padding: 3rem 0 0 !important;
 }
 
 .card-image {
