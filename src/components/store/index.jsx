@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 // import { CartContext } from '../cart/CartProv';
 import axios from 'axios';
-import { formatPrice, fetchData } from '../../helpers/';
+import { formatPrice } from '../../helpers/';
 
 
 const Store = () => {
@@ -36,19 +36,19 @@ const Store = () => {
             products.map(product => {
                 if (product.stock > 0) {
                   return (
-                  <div class="card column is-one-quarter">
+                  <div className="card column is-one-quarter" key={product.id}>
                     <Link to={{pathname: `/products/${product.id}`, product: product}} key={product.id}>
-                      <div class="card-image">
-                        <figure class="image is-4by3">
-                          <img src={product.image.url} alt={product.name} style={{'max-width': '100%'}} />
+                      <div className="card-image">
+                        <figure className="image is-4by3">
+                          <img src={product.image.url} alt={product.name} />
                         </figure>
                       </div>
-                      <div class="card-content">
-                        <div class="media">
+                      <div className="card-content">
+                        <div className="media">
 
-                          <div class="media-content has-text-centered">
-                            <p class="title is-5">{product.name}</p>
-                            <p class="subtitle is-6 is-bold">{formatPrice(product.price)}</p>
+                          <div className="media-content has-text-centered">
+                            <p className="title is-5">{product.name}</p>
+                            <p className="subtitle is-6 is-bold">{formatPrice(product.price)}</p>
                           </div>
                         </div>
                       </div>

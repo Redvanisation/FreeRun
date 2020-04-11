@@ -22,6 +22,7 @@ const SingleProduct = ({ product }) => {
         <h3 className="title is-4 single-product__text-div--item">{product.name}</h3>
         <hr/>
         <p className="subtitle single-product__text-div--item">{product.description}</p>
+        <p className="subtitle single-product__text-div--item"><span className="subtitle is-bold">Stock:</span> {product.stock}</p>
         <p className="title is-4 single-product__text-div--item">{formatPrice(product.price)}</p>
         <div>
           <button className="button" onClick={() => handleClick(product, cartCtx)}>

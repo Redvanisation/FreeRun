@@ -8,18 +8,19 @@ import CartPage from './pages/CartPage';
 import AddProductPage from './pages/AddProductPage';
 import 'bulma';
 import './stylesheets/main.scss';
+import Modal from './components/Modal';
 
 ReactDOM.render(
   <BrowserRouter>
       <Switch>
         <CartProv>
-          <Route exact path='/' component={ProductsPage} />
+          <Modal>
+            <Route exact path='/' component={ProductsPage} />
+          </Modal>
           <Route exact path='/products/:id' component={ProductShowPage} />
-          {/* <Route exact path='/products/:id' render={(props) => <ProductShowPage {...props} />}/> */}
           <Route exact path='/cart' component={CartPage} />
           <Route exact path='/add' component={AddProductPage} />
         </CartProv>
-        {/* <Route path="/cart" render={(props) => <CartPage {...props} />} /> */}
       </Switch>
   </BrowserRouter>,
   document.getElementById('root')

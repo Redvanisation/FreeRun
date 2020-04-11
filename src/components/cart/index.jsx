@@ -1,9 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { CartContext } from './CartProv';
 import { PayPalButton } from "react-paypal-button-v2";
-import { formatPrice, calculateTax, calculateSubtotal, calculateTotalPrice } from '../../helpers/';
-import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import { formatPrice } from '../../helpers/';
 import Quantity from '../Quantity';
+import axios from 'axios';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Cart = ({ history }) => {
@@ -63,10 +65,16 @@ const Cart = ({ history }) => {
     setTotal(Number(subtotal) + Number(tax));
   };
 
+  
+  
   const success = () => {
     cartCtx.clearCart();
     history.push('/');
   }
+
+  const notify = () => toast("Transaction completed successfully!", {
+    onClose: () => success()
+  });
 
 
   return (
@@ -98,6 +106,7 @@ const Cart = ({ history }) => {
 
       <div className="column has-text-centered">
         <h3 className="column title">Summary</h3>
+        <ToastContainer autoClose={3000} hideProgressBar={true} position='top-right' />
         <div className="is-flex cart__summary">
           <h5 className="is-bold is-6">Subtotal</h5>
           <p className="">{formatPrice(subtotal)}</p>
@@ -123,17 +132,17 @@ const Cart = ({ history }) => {
                   shippingPreference='NO_SHIPPING'
                   onSuccess={(details, data) => {
                     updateCartStock(cartCtx.cart)
-                    
-                    isLoading ? 
-                      console.log('PROCESSING.....')
-                    :
-                      setTimeout(() => {
-                          alert("Transaction completed by " + details.payer.name.given_name)
-                          success();
-                        }, 1000)
+                    notify();
                     }
                   }
-                  color='black'
+                  onCancel={() => {
+                    console.log('canceled')
+                  }}
+                  style={{
+                    label: 'checkout',
+                    color: 'black',
+                    size: 'responsive',
+                  }}
               />
           </div>
         </div>
@@ -144,10 +153,6 @@ const Cart = ({ history }) => {
                 cartCtx.clearCart();
                 history.push('/');
               }}>PAY!</button> */}
-
-
-
-    
     </div>
 
   );
