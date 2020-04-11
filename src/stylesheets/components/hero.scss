@@ -1,0 +1,44 @@
+.hero {
+  margin: 0 auto;
+  margin-bottom: 8rem;
+
+  &__slide-1 {
+    background-image: linear-gradient(to bottom left, rgba($color-secondary, .8), rgba($color-black, .7)), url('../../img/bg.jpg');
+  }
+  &__slide-2 {
+    background-image: linear-gradient(to bottom left, rgba($color-secondary, .8), rgba($color-black, .7)), url('../../img/bg2.png');
+  }
+  &__slide-3 {
+    background-image: linear-gradient(to bottom left, rgba($color-secondary, .8), rgba($color-black, .7)), url('../../img/bg3.jpg');
+  }
+
+  &__slide-1, 
+  &__slide-2,
+  &__slide-3 {
+    background-size: cover;
+    background-position: bottom;
+    height: 95vh;
+  }
+
+  &__titles-div {
+    @include absCenter;
+    width: 90%;
+    z-index: 10;
+    
+    &--h1 {
+      display: inline-block;
+      color: $color-primary;
+      margin-bottom: 3rem !important;
+      letter-spacing: 2px;
+    }
+    
+    &--h2 {
+      letter-spacing: 2px;
+      color: $color-primary;
+    }
+
+    &--btn {
+      margin-top: 5rem;
+    }
+  }
+}

@@ -131,7 +131,7 @@ const Cart = ({ history }) => {
                   amount={total}
                   shippingPreference='NO_SHIPPING'
                   onSuccess={(details, data) => {
-                    updateCartStock(cartCtx.cart)
+                    // updateCartStock(cartCtx.cart)
                     notify();
                     }
                   }

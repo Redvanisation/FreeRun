@@ -31,7 +31,7 @@ const Store = () => {
 
 
   return (
-      <div className="columns is-multiline is-vcentered is-centered">
+      <div className="columns is-multiline is-vcentered is-centered card-container" id="store">
         {isLoading ? null :
             products.map(product => {
                 if (product.stock > 0) {

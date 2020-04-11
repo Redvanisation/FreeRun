@@ -13,3 +13,12 @@
     }
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .modal {
+    &__div {
+      width: 90%;
+      margin: 0 auto;
+    }
+  }
+}

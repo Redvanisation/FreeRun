@@ -10,7 +10,6 @@ const Layout = ({ children, title}) => {
     <>
       <TopBar />
       <div className="wrapper">
-        {/* <h1>{title}</h1> */}
         {children}
       </div>
     </>
