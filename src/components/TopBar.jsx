@@ -44,11 +44,11 @@ const TopBar = () => {
             </Link>
           </div>
 
-          <div className="top-bar__link-div">
+          {/* <div className="top-bar__link-div">
             <Link to="/add" className="top-bar__link is-bold">
               Add
             </Link>
-          </div>
+          </div> */}
         </Navbar.Container>
       </Navbar.Menu>
     </Navbar>

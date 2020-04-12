@@ -12,18 +12,18 @@ import Modal from './components/Modal';
 
 ReactDOM.render(
   <BrowserRouter>
-      <Switch>
-        <CartProv>
-          <Modal>
-            <Route exact path='/' component={ProductsPage} />
-          </Modal>
-          <Route exact path='/products/:id' component={ProductShowPage} />
-          <Route exact path='/cart' component={CartPage} />
-          <Route exact path='/add' component={AddProductPage} />
-        </CartProv>
-      </Switch>
+    <Switch>
+      <CartProv>
+        <Modal>
+          <Route exact path="/" component={ProductsPage} />
+        </Modal>
+        <Route exact path="/products/:id" component={ProductShowPage} />
+        <Route exact path="/cart" component={CartPage} />
+        {/* <Route exact path="/add" component={AddProductPage} /> */}
+      </CartProv>
+    </Switch>
   </BrowserRouter>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 // // If you want your app to work offline and load faster, you can change

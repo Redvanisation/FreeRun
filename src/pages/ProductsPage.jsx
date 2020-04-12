@@ -4,13 +4,11 @@ import Hero from '../components/Hero';
 import Store from '../components/store';
 
 
-const ProductsPage = () => {
-  return (
-    <Layout title='Products Page'>
-      <Hero />
-      <Store />
-    </Layout>
-  );
-}
+const ProductsPage = () => (
+  <Layout title="Products Page">
+    <Hero />
+    <Store />
+  </Layout>
+);
 
 export default ProductsPage;
