@@ -1,7 +1,9 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { Link } from 'react-scroll';
 import { Carousel } from 'react-responsive-carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 
 const Hero = () => {
@@ -13,7 +15,7 @@ const Hero = () => {
     autoPlay: true,
     interval: 8000,
     transitionTime: 1000,
-    className: 'hero'
+    className: 'hero',
   };
 
   const renderIntro = () => (
@@ -35,12 +37,12 @@ const Hero = () => {
     <>
       {renderIntro()}
       <Carousel {...settings}>
-        <div className="hero__slide-1"></div>
-        <div  className="hero__slide-2"></div>
-        <div  className="hero__slide-3"></div>
+        <div className="hero__slide-1" />
+        <div className="hero__slide-2" />
+        <div className="hero__slide-3" />
       </Carousel>
     </>
   );
-}
+};
 
 export default Hero;

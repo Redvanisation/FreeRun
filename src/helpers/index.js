@@ -1,3 +1,3 @@
-export const formatPrice = price => (
+export const formatPrice = (price) => (
   `$${price.toFixed(2)}`
 );

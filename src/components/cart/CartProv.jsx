@@ -1,21 +1,36 @@
+/* eslint-disable consistent-return */
+/* eslint-disable no-param-reassign */
 import React, { createContext } from 'react';
+import PropTypes from 'prop-types';
 import useLocalStorage from '../../hooks/useLocalStorage';
-
 
 
 export const CartContext = createContext(null);
 
 
 const CartProv = ({ children }) => {
-
   const [cart, setCart] = useLocalStorage('Cart', []);
   const [quantity, setQuantity] = useLocalStorage('quantity', 0);
 
-  const addToCart = item => {
+
+  const quantityCount = (action, item) => {
+    switch (action) {
+      case '+':
+        return setQuantity((prev) => prev + 1);
+      case '-':
+        return setQuantity((prev) => prev - 1);
+      case 'REMOVE':
+        return setQuantity((prev) => prev - item.quantity);
+      default:
+        throw Error();
+    }
+  };
+
+  const addToCart = (item) => {
     if (cart.includes(item)) {
       if (item.quantity < item.stock) {
-        item.quantity++;
-        setCart(prevState => {
+        item.quantity += 1;
+        setCart((prevState) => {
           const ind = prevState.indexOf(item);
           prevState[ind] = item;
           quantityCount('+');
@@ -26,20 +41,20 @@ const CartProv = ({ children }) => {
       }
     } else {
       item.quantity = 1;
-      setCart(prevState => [...prevState, item]);
+      setCart((prevState) => [...prevState, item]);
       quantityCount('+');
     }
-  }
+  };
 
-  const removeFromCart = item => {
-    setCart(cart.filter(product => product.name !== item.name));
+  const removeFromCart = (item) => {
+    setCart(cart.filter((product) => product.name !== item.name));
     quantityCount('REMOVE', item);
-  }
+  };
 
-  const subtractFromCart = item => {
+  const subtractFromCart = (item) => {
     if (cart.includes(item) && item.quantity > 1) {
-      item.quantity--;
-      setCart(prevState => {
+      item.quantity -= 1;
+      setCart((prevState) => {
         const ind = prevState.indexOf(item);
         prevState[ind] = item;
         quantityCount('-');
@@ -48,29 +63,14 @@ const CartProv = ({ children }) => {
     } else {
       return removeFromCart(item);
     }
-  }
+  };
 
   const clearCart = () => {
     setCart([]);
     setQuantity(0);
-  }
-
-  
-  const quantityCount = (action, item) => {
-    switch(action) {
-      case '+':
-        return setQuantity(prev => prev + 1);
-      case '-':
-        return setQuantity(prev => prev - 1);
-      case 'REMOVE':
-        return setQuantity(prev => prev - item.quantity);
-      default:
-        throw Error();
-    }
-  }
+  };
 
 
-  
   return (
     <CartContext.Provider
       value={{
@@ -83,9 +83,13 @@ const CartProv = ({ children }) => {
         clearCart,
       }}
     >
-    {children}
-  </CartContext.Provider>
+      {children}
+    </CartContext.Provider>
   );
-}
+};
+
+CartProv.propTypes = {
+  children: PropTypes.instanceOf(Array).isRequired,
+};
 
 export default CartProv;

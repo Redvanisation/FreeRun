@@ -16,7 +16,34 @@
     color: $color-white !important;
   }
 
+  &__title {
+    position: relative;
+    top: 10px;
+    left: 10px;
+  }
+
+  &__link-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__link-div {
+    height: 100%;
+    margin: 0 .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color .3s;
+
+    &:hover {
+      background-color: rgba($color-primary, .1);
+    }
+  }
+
   &__link {
+    display: block;
+    padding: .5rem;
+
     &--burger {
       color: $color-white;
     }
@@ -27,6 +54,7 @@
     position: relative;
     top: 6px;
     font-size: 1.5rem;
+    
     &--number {
       display: inline-block;
       position: relative;
@@ -42,6 +70,10 @@
   
     &__item {
       text-align: center;
+    }
+
+    &__link-container {
+      flex-direction: column;
     }
   
     &__link {

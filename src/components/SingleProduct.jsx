@@ -1,15 +1,15 @@
 import React, { useContext } from 'react';
-import {CartContext} from './cart/CartProv';
-import { formatPrice } from '../helpers/';
+import PropTypes from 'prop-types';
+import { CartContext } from './cart/CartProv';
+import { formatPrice } from '../helpers';
 
 
 const SingleProduct = ({ product }) => {
-
   const cartCtx = useContext(CartContext);
 
-  const handleClick = (product, ctx) => {
-    ctx.addToCart(product);
-  }
+  const handleClick = (item, ctx) => {
+    ctx.addToCart(item);
+  };
 
 
   return (
@@ -20,18 +20,25 @@ const SingleProduct = ({ product }) => {
 
       <div className="column has-text-centered is-vertical-center-col single-product__text-div">
         <h3 className="title is-4 single-product__text-div--item">{product.name}</h3>
-        <hr/>
+        <hr />
         <p className="subtitle single-product__text-div--item">{product.description}</p>
-        <p className="subtitle single-product__text-div--item"><span className="subtitle is-bold">Stock:</span> {product.stock}</p>
+        <p className="subtitle single-product__text-div--item">
+          <span className="subtitle is-bold">Stock:</span>
+          {product.stock}
+        </p>
         <p className="title is-4 single-product__text-div--item">{formatPrice(product.price)}</p>
         <div>
-          <button className="button" onClick={() => handleClick(product, cartCtx)}>
+          <button className="button" type="button" onClick={() => handleClick(product, cartCtx)}>
             Add to cart
           </button>
         </div>
       </div>
     </div>
   );
-}
+};
+
+SingleProduct.propTypes = {
+  product: PropTypes.instanceOf(Object).isRequired,
+};
 
 export default SingleProduct;
