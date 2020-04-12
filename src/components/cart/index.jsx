@@ -23,7 +23,7 @@ const Cart = ({ history }) => {
 
     axios({
       method: 'put',
-      url: `http://localhost:3000/api/products/${item.id}`,
+      url: `https://free-run-api.herokuapp.com/api/products/${item.id}`,
       data: {
         ...item,
         stock: item.stock - item.quantity,

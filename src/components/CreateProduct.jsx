@@ -11,12 +11,12 @@ const CreateProduct = () => {
     e.preventDefault();
     
     const data = new FormData(e.target);
-    axios.post('https://free-run-api.herokuapp.com/api/products', data)
-    axios.post('http://localhost:3000/api/products', data)
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
+    axios.post('https://free-run-api.herokuapp.com/api/products', data);
+    // axios.post('http://localhost:3000/api/products', data)
+      // .then(res => console.log(res))
+      // .catch(err => console.log(err));
     e.target.reset();
-  }
+  };
 
   const handleImage = (e) => {
     const img = e.target.files[0];

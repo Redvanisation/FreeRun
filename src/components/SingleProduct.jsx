@@ -23,7 +23,7 @@ const SingleProduct = ({ product }) => {
         <hr />
         <p className="subtitle single-product__text-div--item">{product.description}</p>
         <p className="subtitle single-product__text-div--item">
-          <span className="subtitle is-bold">Stock:</span>
+          <span className="subtitle is-bold">Stock: </span>
           {product.stock}
         </p>
         <p className="title is-4 single-product__text-div--item">{formatPrice(product.price)}</p>
