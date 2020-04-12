@@ -1,0 +1,13 @@
+.search-bar {
+  display: block;
+  margin: 2rem auto;
+  width: 40%;
+  
+}
+
+
+@media only screen and (max-width: 600px) {
+  .search-bar {
+    width: 60%;
+  }
+}

@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 // import { CartContext } from '../cart/CartProv';
 import axios from 'axios';
 import { formatPrice } from '../../helpers/';
+import SearchBar from '../SearchBar';
 
 
 const Store = () => {
   
   const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
+  const [search, setSearch] = useState('');
 
 
   useEffect(() => {
@@ -21,21 +23,25 @@ const Store = () => {
     }
     // fetchData('http://localhost:3000/api/products',  setProducts);
     
-    setIsLoading(false);
+    // setIsLoading(false);
     fetchData();
   }, []);
 
 
+  const filteredProducts = products.filter(product => (product.name.toLowerCase().indexOf(search.toLowerCase()) !== -1) || false );
 
-
+  console.log(filteredProducts)
 
 
   return (
     <>
       <h2 className="title is-1 has-text-centered is-uppercase big-title" id="store">Our Sneakers</h2>
+      <SearchBar setSearch={setSearch} />
       <div className="columns is-multiline is-vcentered is-centered card-container">
-        {isLoading ? null :
-            products.map(product => {
+        {
+        // isLoading ? null :
+        filteredProducts.length > 0 ?
+            filteredProducts.map(product => {
                 if (product.stock > 0) {
                   return (
                   <div className="card column is-one-quarter" key={product.id}>
@@ -58,7 +64,12 @@ const Store = () => {
                   </div>
                   )
                 }
-            })}
+            })
+          : 
+          <div className="wrong-search-div has-text-centered">  
+            <h2 className="title is-4">Please try different keywords...</h2>
+          </div>
+          }
       </div>
     </>
   );
