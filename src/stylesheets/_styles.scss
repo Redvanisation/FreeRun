@@ -6,6 +6,10 @@ html {
   box-sizing: border-box;
 }
 
+body {
+  overflow: hidden !important;
+}
+
 .wrapper {
   width: 100vw;
 }
