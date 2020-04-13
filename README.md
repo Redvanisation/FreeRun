@@ -60,7 +60,7 @@ FreeRun e-commerce website
 
 [![Product Name Screen Shot][product-screenshot]](https://tech--talks.herokuapp.com/)
 
-This project is a **PROTOTYPE** of a real e-commerce that I have previously developed, it's a full-stack mobile responsive app with a **React** front-end and a **Ruby on Rails API** back-end with **AWS S3** for images' storage via **active storage**, it has a PayPal checkout integration and the cart is saved in the browser's local storage. This is the front-end repo and you could find the back-end code on [here](https://github.com/Redvanisation/FreeRunAPI).
+This project is a **PROTOTYPE** of a real e-commerce that I have previously developed, it's a full-stack mobile responsive app with a **React** front-end and a **Ruby on Rails API** back-end with **AWS S3** for images' storage via **active storage**, it has a PayPal checkout integration and the cart is saved in the browser's local storage. This is the front-end repo and you could find the back-end code on [https://github.com/Redvanisation/FreeRunAPI](https://github.com/Redvanisation/FreeRunAPI).
 
 
 ### Built With
