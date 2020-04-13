@@ -12,14 +12,14 @@ import 'react-toastify/dist/ReactToastify.css';
 const Cart = ({ history }) => {
   const cartCtx = useContext(CartContext);
 
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
   const [subtotal, setSubtotal] = useState(0);
   const [tax, setTax] = useState(0);
   const [total, setTotal] = useState(0);
 
 
   const updateItemStock = (item) => {
-    setIsLoading(true);
+    // setIsLoading(true);
 
     axios({
       method: 'put',
@@ -33,9 +33,6 @@ const Cart = ({ history }) => {
       },
       mode: 'cors',
     })
-      .then(() => {
-        setIsLoading(false);
-      })
       .catch((err) => console.log(err));
   };
 

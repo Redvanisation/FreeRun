@@ -9,7 +9,7 @@ const Modal = ({ children }) => {
   return (
     <>
       <div className={`modal ${show ? 'is-active' : ''}`}>
-        <div className="modal-background" onClick={() => setShow(false)} />
+        <div className="modal-background" />
         <div className="modal-card">
           <section className="modal-card-body has-text-centered modal__div">
             <div className="modal__div--message">

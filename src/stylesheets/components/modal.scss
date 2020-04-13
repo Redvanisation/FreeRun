@@ -1,5 +1,6 @@
 .modal {
-
+  position: absolute;
+  z-index: 1000 !important;
   &__div {
     padding: 2rem;
     

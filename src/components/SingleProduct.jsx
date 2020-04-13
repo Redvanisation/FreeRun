@@ -22,16 +22,21 @@ const SingleProduct = ({ product }) => {
         <h3 className="title is-4 single-product__text-div--item">{product.name}</h3>
         <hr />
         <p className="subtitle single-product__text-div--item">{product.description}</p>
+        <p className="title is-4 single-product__text-div--item">{formatPrice(product.price)}</p>
         <p className="subtitle single-product__text-div--item">
           <span className="subtitle is-bold">Stock: </span>
-          {product.stock}
+          {product.stock > 0 ? product.stock : 'OUT OF STOCK'}
         </p>
-        <p className="title is-4 single-product__text-div--item">{formatPrice(product.price)}</p>
-        <div>
-          <button className="button" type="button" onClick={() => handleClick(product, cartCtx)}>
-            Add to cart
-          </button>
-        </div>
+        {
+          product.stock <= 0 ? null
+            : (
+              <div>
+                <button className="button" type="button" onClick={() => handleClick(product, cartCtx)}>
+                  Add to cart
+                </button>
+              </div>
+            )
+        }
       </div>
     </div>
   );

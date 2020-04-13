@@ -3,10 +3,11 @@
     width: 320px;
   }
   &__toast--default {
-      background: $color-blue-light;
-      color: $color-white;
+      background: $color-primary;
+      color: rgba($color-secondary, .8);
       font-weight: bold;
       padding: .5rem;
+      box-shadow: 0 2px 2px 2px rgab($color-black, .6);
    }
   
    &__progress-bar,

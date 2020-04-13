@@ -30,15 +30,14 @@ const CreateProduct = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" name='name' placeholder='name' required />
-      {/* <input type="text" name='description' placeholder='description' required /> */}
-      <textarea name="description" cols="40" rows="10"></textarea>
-      <input type="number" name='price' placeholder='price' required />
-      <input type="text" name='category' placeholder='category' required />
-      <input type="number" name='stock'placeholder='stock' required />
-      <input type="file" name='image' onChange={handleImage} required />
-      <input type="submit" value="Create" disabled={isDisabled} />
+    <form onSubmit={handleSubmit} className="form create-product">
+      <input type="text" className="input create-product__input" name='name' placeholder='name' required />
+      <textarea className="textarea create-product__textarea" name="description" cols="40" rows="10" />
+      <input type="number" className="input create-product__input" name='price' placeholder='price' required />
+      <input type="text" className="input create-product__input" name='category' placeholder='category' required />
+      <input type="number" className="input create-product__input" name='stock'placeholder='stock' required />
+      <input type="file" className="input create-product__input" name='image' onChange={handleImage} required />
+      <input type="submit" className="button" value="Create" disabled={isDisabled} />
     </form>
   );
 }

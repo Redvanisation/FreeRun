@@ -14,13 +14,13 @@ const Store = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      // const response = await axios.get('http://localhost:3000/api/products');
       const response = await axios.get('https://free-run-api.herokuapp.com/api/products');
       setProducts(response.data);
     };
 
     fetchData();
   }, []);
-
 
   const filteredProducts = products.filter((product) => product.name.toLowerCase()
     .indexOf(search.toLowerCase()) !== -1);
@@ -33,30 +33,26 @@ const Store = () => {
       <div className="columns is-multiline is-vcentered is-centered card-container">
         {
         filteredProducts.length > 0
-          ? filteredProducts.map((product) => {
-            if (product.stock > 0) {
-              return (
-                <div className="card column is-one-quarter" key={product.id}>
-                  <Link to={{ pathname: `/products/${product.id}`, product }} key={product.id}>
-                    <div className="card-image">
-                      <figure className="image">
-                        <img src={product.image.url} alt={product.name} />
-                      </figure>
-                    </div>
-                    <div className="card-content">
-                      <div className="media">
-
-                        <div className="media-content has-text-centered">
-                          <p className="title is-5">{product.name}</p>
-                          <p className="subtitle is-6 is-bold">{formatPrice(product.price)}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
+          ? filteredProducts.map((product) => (
+            <div className="card column is-one-quarter" key={product.id}>
+              <Link to={{ pathname: `/products/${product.id}`, product }} key={product.id}>
+                <div className="card-image">
+                  <figure className="image">
+                    <img src={product.image.url} alt={product.name} />
+                  </figure>
                 </div>
-              );
-            }
-          })
+                <div className="card-content">
+                  <div className="media">
+
+                    <div className="media-content has-text-centered">
+                      <p className="title is-5">{product.name}</p>
+                      <p className="subtitle is-6 is-bold">{formatPrice(product.price)}</p>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </div>
+          ))
           : (
             <div className="wrong-search-div has-text-centered">
               <h2 className="title is-4">Please try different keywords...</h2>
