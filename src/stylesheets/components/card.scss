@@ -4,7 +4,8 @@
 
 .card {
   margin-top: 2rem;
-  height: 400px;
+  height: 510px;
+  max-height: 550px;
   padding: 1rem;
   padding-top: 3rem;
 }
@@ -28,4 +29,11 @@
 
 .wrong-search-div {
   margin: 10rem auto 20rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .card {
+    height: 400px;
+    max-height: 500px;
+  }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SearchBar = ({ setSearch }) => <input type="search" className="search-bar input is-centered has-text-centered" placeholder="Find products..." onChange={(e) => setSearch(e.target.value)} />;
+const SearchBar = ({ setSearch }) => <input type="search" className="search-bar input is-centered has-text-centered" placeholder="Search our products..." onChange={(e) => setSearch(e.target.value)} />;
 
 
 SearchBar.propTypes = {
