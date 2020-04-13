@@ -27,7 +27,8 @@ const CartProv = ({ children }) => {
   };
 
   const addToCart = (item) => {
-    if (cart.includes(item)) {
+    if (cart.some((product) => product.name === item.name)) {
+
       if (item.quantity < item.stock) {
         item.quantity += 1;
         setCart((prevState) => {
@@ -89,7 +90,7 @@ const CartProv = ({ children }) => {
 };
 
 CartProv.propTypes = {
-  children: PropTypes.instanceOf(Array).isRequired,
+  children: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default CartProv;

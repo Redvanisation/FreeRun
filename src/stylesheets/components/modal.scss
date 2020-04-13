@@ -1,16 +1,26 @@
 .modal {
   position: absolute;
   z-index: 1000 !important;
+
   &__div {
     padding: 2rem;
+
+    &--btns-container {
+      display: flex;
+      justify-content: center;
+      margin: 1rem;
+      margin-top: 2rem;
+    }
     
     &--message {
       margin-bottom: 1rem;
       font-size: 1.1rem;
     }
 
-    &--btn {
-
+    &--btn-confirm {
+      &:not(:last-child) {
+        margin-right: 2rem;
+      }
     }
   }
 }
@@ -20,6 +30,23 @@
     &__div {
       width: 90%;
       margin: 0 auto;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .modal {
+    &__div {
+      &--btns-container {
+        flex-direction: column;
+      }
+
+      &--btn-confirm {
+        &:not(:last-child) {
+          margin-right: 0;
+          margin-bottom: 1rem;
+        }
+      }
     }
   }
 }

@@ -16,9 +16,9 @@ ReactDOM.render(
       <CartProv>
         <Modal>
           <Route exact path="/" component={ProductsPage} />
+          <Route exact path="/products/:id" component={ProductShowPage} />
+          <Route exact path="/cart" component={CartPage} />
         </Modal>
-        <Route exact path="/products/:id" component={ProductShowPage} />
-        <Route exact path="/cart" component={CartPage} />
         {/* <Route exact path="/add" component={AddProductPage} /> */}
       </CartProv>
     </Switch>

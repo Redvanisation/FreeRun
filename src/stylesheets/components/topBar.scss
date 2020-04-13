@@ -1,5 +1,6 @@
 .top-bar {
   background-color: $color-secondary;
+  z-index: 900 !important;
 
   &__item {
 
