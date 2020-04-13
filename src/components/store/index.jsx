@@ -22,8 +22,12 @@ const Store = () => {
     fetchData();
   }, []);
 
-  const filteredProducts = products.filter((product) => product.name.toLowerCase()
-    .indexOf(search.toLowerCase()) !== -1);
+  const filteredProducts = products.filter((product) => {
+    if (search.toLowerCase() === 'all') {
+      return products;
+    }
+    return product.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+  });
 
 
   return (
