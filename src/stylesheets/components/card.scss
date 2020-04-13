@@ -1,0 +1,39 @@
+.card-container {
+  margin: 0;
+}
+
+.card {
+  margin-top: 2rem;
+  height: 510px;
+  max-height: 550px;
+  padding: 1rem;
+  padding-top: 3rem;
+}
+
+.card-image {
+  height: 50%;
+}
+
+.card-content {
+  padding: 3rem 0 0 !important;
+}
+
+.card-image {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.media-content > p:not(:last-child) {
+  margin-bottom: 3rem ;
+}
+
+.wrong-search-div {
+  margin: 10rem auto 20rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .card {
+    height: 400px;
+    max-height: 500px;
+  }
+}

@@ -1,0 +1,14 @@
+.search-bar {
+  display: block;
+  margin: 2rem auto;
+  width: 40%;
+  font-size: 1.2rem;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .search-bar {
+    width: 60%;
+    font-size: 1.1rem;
+  }
+}

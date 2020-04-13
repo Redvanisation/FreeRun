@@ -1,0 +1,20 @@
+.create-product {
+  max-width: 50%;
+  margin: 1rem auto;
+
+  &__input {
+    &:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+  }
+  
+  &__textarea {
+    margin-bottom: 2rem;
+
+  }
+
+  &__input,
+  &__textarea {
+    
+  }
+}
