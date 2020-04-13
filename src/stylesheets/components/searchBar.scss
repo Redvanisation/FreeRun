@@ -58,5 +58,11 @@
 
       }
     }
+
+    &__select-container {
+      &--select {
+        width: 90px;
+      }
+    }
   }
 }
