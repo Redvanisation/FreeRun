@@ -14,8 +14,10 @@ const Store = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      // const response = await axios.get('http://localhost:3000/api/products');
-      const response = await axios.get('https://free-run-api.herokuapp.com/api/products');
+      const response = await axios.get('http://localhost:3000/api/products', {
+        withCredentials: true,
+      });
+      // const response = await axios.get('https://free-run-api.herokuapp.com/api/products');
       setProducts(response.data);
     };
 

@@ -1,6 +1,6 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-param-reassign */
-import React, { createContext } from 'react';
+import React, { useState, createContext } from 'react';
 import PropTypes from 'prop-types';
 import useLocalStorage from '../../hooks/useLocalStorage';
 
@@ -10,17 +10,18 @@ export const CartContext = createContext(null);
 
 const CartProv = ({ children }) => {
   const [cart, setCart] = useLocalStorage('Cart', []);
-  const [quantity, setQuantity] = useLocalStorage('quantity', 0);
+  // const [, setQuantity] = useLocalStorage('quantity', 0);
+  const [, setQuantity] = useState(0);
 
 
-  const quantityCount = (action, item) => {
+  const quantityCount = (action) => {
     switch (action) {
       case '+':
         return setQuantity((prev) => prev + 1);
       case '-':
         return setQuantity((prev) => prev - 1);
-      case 'REMOVE':
-        return setQuantity((prev) => prev - item.quantity);
+      // case 'REMOVE':
+      //   return setQuantity((prev) => prev - item.quantity);
       default:
         throw Error();
     }
@@ -32,8 +33,8 @@ const CartProv = ({ children }) => {
       if (item.quantity < item.stock) {
         item.quantity += 1;
         setCart((prevState) => {
-          const ind = prevState.indexOf(item);
-          prevState[ind] = item;
+          // const ind = prevState.indexOf(item);
+          // prevState[ind] = item;
           quantityCount('+');
           return prevState;
         });
@@ -43,21 +44,21 @@ const CartProv = ({ children }) => {
     } else {
       item.quantity = 1;
       setCart((prevState) => [...prevState, item]);
-      quantityCount('+');
+      // quantityCount('+');
     }
   };
 
   const removeFromCart = (item) => {
     setCart(cart.filter((product) => product.name !== item.name));
-    quantityCount('REMOVE', item);
+    // quantityCount('REMOVE', item);
   };
 
   const subtractFromCart = (item) => {
     if (cart.includes(item) && item.quantity > 1) {
       item.quantity -= 1;
       setCart((prevState) => {
-        const ind = prevState.indexOf(item);
-        prevState[ind] = item;
+        // const ind = prevState.indexOf(item);
+        // prevState[ind] = item;
         quantityCount('-');
         return prevState;
       });
@@ -68,7 +69,7 @@ const CartProv = ({ children }) => {
 
   const clearCart = () => {
     setCart([]);
-    setQuantity(0);
+    // setQuantity(0);
   };
 
 
@@ -76,7 +77,7 @@ const CartProv = ({ children }) => {
     <CartContext.Provider
       value={{
         cart,
-        cartCount: quantity,
+        cartCount: cart.length,
         addToCart,
         subtractFromCart,
         removeFromCart,

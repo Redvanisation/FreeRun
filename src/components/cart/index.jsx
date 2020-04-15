@@ -23,7 +23,7 @@ const Cart = ({ history }) => {
 
     axios({
       method: 'put',
-      url: `https://free-run-api.herokuapp.com/api/products/${item.id}`,
+      url: `http://localhost:3000/api/products/${item.id}`,
       data: {
         ...item,
         stock: item.stock - item.quantity,
@@ -33,7 +33,7 @@ const Cart = ({ history }) => {
       },
       mode: 'cors',
     })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log('?', err));
   };
 
   const updateCartStock = (cart) => {

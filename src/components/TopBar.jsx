@@ -3,12 +3,15 @@ import { Link } from 'react-router-dom';
 import { Navbar } from 'react-bulma-components';
 import { FiShoppingCart } from 'react-icons/fi';
 import { CartContext } from './cart/CartProv';
+import { UserContext } from '../containers/UsersProvider';
 
 
 const TopBar = () => {
   const [showHide, setShowHide] = useState(false);
+  const userCtx = useContext(UserContext);
   const cartCtx = useContext(CartContext);
   const numItems = cartCtx.cartCount;
+
 
   return (
 
@@ -26,6 +29,24 @@ const TopBar = () => {
       </Navbar.Brand>
 
       <Navbar.Menu>
+        {
+          Object.keys(userCtx.user).length > 0
+            ? (
+              <Navbar.Container>
+                <div>
+                  <h5>
+                    Logged in as:
+                    {userCtx.user.email}
+                  </h5>
+                  {
+                    userCtx.user.admin === true ? <h5>Admin</h5> : null
+                  }
+                </div>
+              </Navbar.Container>
+            )
+            : null
+        }
+
         <Navbar.Container className="top-bar__link-container" position="end">
           <div className="top-bar__link-div">
             <Link to="/" className="top-bar__link is-bold">
@@ -44,11 +65,11 @@ const TopBar = () => {
             </Link>
           </div>
 
-          {/* <div className="top-bar__link-div">
+          <div className="top-bar__link-div">
             <Link to="/add" className="top-bar__link is-bold">
               Add
             </Link>
-          </div> */}
+          </div>
         </Navbar.Container>
       </Navbar.Menu>
     </Navbar>
