@@ -1,11 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { UserContext } from '../containers/UsersProvider';
+import { baseUrl } from '../helpers';
 
 const Signup = () => {
-  const userCtx = useContext(UserContext);
-
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
@@ -14,12 +12,11 @@ const Signup = () => {
 
     if (password !== confirmPassword) {
       alert('Password and Confirmation do not match!');
-
     } else {
       const data = new FormData(e.target);
       axios({
         method: 'post',
-        url: 'http://localhost:3000/auth/register',
+        url: `${baseUrl}auth/register`,
         data,
       })
         .then((res) => console.log(res))

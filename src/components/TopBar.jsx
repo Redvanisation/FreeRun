@@ -5,6 +5,7 @@ import { FiShoppingCart } from 'react-icons/fi';
 import axios from 'axios';
 import { CartContext } from './cart/CartProv';
 import { UserContext } from '../containers/UsersProvider';
+import { baseUrl } from '../helpers';
 
 
 const TopBar = () => {
@@ -18,7 +19,7 @@ const TopBar = () => {
     if (userCtx.cookies.user) {
       axios({
         method: 'delete',
-        url: 'http://localhost:3000/auth/logout',
+        url: `${baseUrl}auth/logout`,
         withCredentials: true,
       })
         .then((res) => {
@@ -30,11 +31,10 @@ const TopBar = () => {
         })
         .catch((err) => console.log(err));
     } else {
-      return console.log('login first');
+      console.log('login first');
     }
   };
 
-  // console.log(userCtx.cookies.user)
   return (
 
     <Navbar

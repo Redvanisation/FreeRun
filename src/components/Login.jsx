@@ -1,19 +1,11 @@
 import React, { useContext } from 'react';
 import axios from 'axios';
-import { useHistory, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { UserContext } from '../containers/UsersProvider';
+import { baseUrl } from '../helpers';
 
 const Login = () => {
   const userCtx = useContext(UserContext);
-  const history = useHistory();
-
-
-  const loginRedirect = (ctx, res) => {
-    ctx.setCookie('user', res.data);
-    if (ctx.cookies.user) {
-      history.push('/');
-    }
-  };
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -21,16 +13,14 @@ const Login = () => {
 
     axios({
       method: 'post',
-      url: 'http://localhost:3000/auth/login',
+      url: `${baseUrl}auth/login`,
       data,
       withCredentials: true,
     })
-      .then((res) => loginRedirect(userCtx, res))
+      .then((res) => userCtx.setCookie('user', res.data))
       .catch((err) => console.log(err));
   };
 
-
-  console.log(userCtx.cookies);
 
   return (
     <div className="form-container has-text-centered">

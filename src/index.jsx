@@ -7,6 +7,7 @@ import ProductsPage from './pages/ProductsPage';
 import ProductShowPage from './pages/ProductShowPage';
 import CartPage from './pages/CartPage';
 import AddProductPage from './pages/AddProductPage';
+import UpdateProductPage from './pages/UpdateProductPage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import 'bulma';
@@ -22,8 +23,9 @@ ReactDOM.render(
             <Route exact path="/" component={ProductsPage} />
             <Route exact path="/products/:id" component={ProductShowPage} />
             <Route exact path="/cart" component={CartPage} />
+            <Route exact path="/add" component={AddProductPage} />
+            <Route exact path="/update" component={UpdateProductPage} />
           </Modal>
-          <Route exact path="/add" component={AddProductPage} />
           <Route exact path="/auth" component={LoginPage} />
           <Route exact path="/signup" component={SignupPage} />
         </CartProv>

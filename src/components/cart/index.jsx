@@ -4,7 +4,7 @@ import { PayPalButton } from 'react-paypal-button-v2';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { CartContext } from './CartProv';
-import { formatPrice } from '../../helpers';
+import { formatPrice, baseUrl } from '../../helpers';
 import Quantity from '../Quantity';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -23,7 +23,7 @@ const Cart = ({ history }) => {
 
     axios({
       method: 'put',
-      url: `http://localhost:3000/api/products/${item.id}`,
+      url: `${baseUrl}api/products/${item.id}`,
       data: {
         ...item,
         stock: item.stock - item.quantity,

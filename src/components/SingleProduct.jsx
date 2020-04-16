@@ -1,14 +1,15 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { CartContext } from './cart/CartProv';
 import { formatPrice } from '../helpers';
 import { ModalContext } from './Modal';
-// import { Redirect } from 'react-router';
-
+import { UserContext } from '../containers/UsersProvider';
 
 const SingleProduct = ({ product }) => {
   const cartCtx = useContext(CartContext);
   const modalCtx = useContext(ModalContext);
+  const userCtx = useContext(UserContext);
 
 
   const handleClick = (ctx, item, modal) => {
@@ -19,6 +20,12 @@ const SingleProduct = ({ product }) => {
 
   const checkItem = (ctx, item) => ctx.cart.some((CartItem) => CartItem.name === item.name);
 
+  const handleDelete = (modal, item) => {
+    modal.setShow(true);
+    modal.setProduct(item);
+    modal.setType('delete');
+  };
+
   return (
     <div className="columns single-product">
       <div className="column is-three-fifths single-product__image-div">
@@ -27,6 +34,18 @@ const SingleProduct = ({ product }) => {
 
       <div className="column has-text-centered is-vertical-center-col single-product__text-div">
         <h3 className="title is-4 single-product__text-div--item">{product.name}</h3>
+        {
+          userCtx.cookies.user && userCtx.cookies.user.admin
+            ? (
+              <div className="single-product__admin-buttons-div">
+                <Link to={{ pathname: '/update', product }} className="button single-product__admin-buttons-div--button">
+                  Update
+                </Link>
+                <button type="button" className="button single-product__admin-buttons-div--button" onClick={() => handleDelete(modalCtx, product)}>Delete</button>
+              </div>
+            )
+            : null
+        }
         <hr />
         <p className="subtitle single-product__text-div--item">{product.description}</p>
         <p className="title is-4 single-product__text-div--item">{formatPrice(product.price)}</p>

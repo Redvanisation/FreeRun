@@ -1,28 +1,28 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { UserContext } from '../containers/UsersProvider';
+import { baseUrl } from '../helpers/index';
 
 
 const CreateProduct = () => {
-
   const userCtx = useContext(UserContext);
   const [, setSelectedImage] = useState(null);
   const [isDisabled, setIsDisabled] = useState(false);
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     const data = new FormData(e.target);
-    data.append('user', userCtx.user.email);
-    // axios.post('https://free-run-api.herokuapp.com/api/products', data);
+    data.append('user', userCtx.cookies.user.email);
+
     axios({
       method: 'post',
-      url: 'http://localhost:3000/api/products',
+      url: `${baseUrl}api/products`,
       data,
       withCredentials: true,
     });
-      // .then(res => console.log(res))
-      // .catch(err => console.log(err));
+    // .then(res => console.log(res))
+    // .catch(err => console.log(err));
     e.target.reset();
   };
 
@@ -35,7 +35,7 @@ const CreateProduct = () => {
       setIsDisabled(true);
       alert('Please upload an image of type PNG or JPG');
     }
-  }
+  };
 
   return (
     <div className="form-container has-text-centered">
@@ -51,6 +51,6 @@ const CreateProduct = () => {
       </form>
     </div>
   );
-}
+};
 
 export default CreateProduct;
