@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 export const ModalContext = createContext(null);
 
 const Modal = ({ children }) => {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const [type, setType] = useState('initial');
   const [product, setProduct] = useState({});
   const history = useHistory();

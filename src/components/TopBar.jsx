@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar } from 'react-bulma-components';
 import { FiShoppingCart } from 'react-icons/fi';
+import axios from 'axios';
 import { CartContext } from './cart/CartProv';
 import { UserContext } from '../containers/UsersProvider';
 
@@ -11,6 +12,20 @@ const TopBar = () => {
   const userCtx = useContext(UserContext);
   const cartCtx = useContext(CartContext);
   const numItems = cartCtx.cartCount;
+
+  const handleLogout = () => {
+    axios({
+      method: 'delete',
+      url: 'http://localhost:3000/auth/logout',
+      withCredentials: true,
+    }).then((res) => {
+      if (res.status === 200) {
+        userCtx.setUser({});
+        console.log(res.data);
+      }
+    })
+      .catch((err) => console.log(err));
+  };
 
 
   return (
@@ -69,6 +84,20 @@ const TopBar = () => {
             <Link to="/add" className="top-bar__link is-bold">
               Add
             </Link>
+          </div>
+
+          <div className="top-bar__link-div">
+            { Object.keys(userCtx.user).length < 1
+              ? (
+                <Link to="/auth" className="top-bar__link is-bold">
+                  Login
+                </Link>
+              )
+              : (
+                <Link to="/" className="top-bar__link is-bold" onClick={handleLogout}>
+                  Logout
+                </Link>
+              )}
           </div>
         </Navbar.Container>
       </Navbar.Menu>

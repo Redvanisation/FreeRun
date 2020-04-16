@@ -1,10 +1,9 @@
 import React, { useContext } from 'react';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { UserContext } from '../containers/UsersProvider';
 
 const Login = () => {
-
   const userCtx = useContext(UserContext);
   const history = useHistory();
 
@@ -30,32 +29,23 @@ const Login = () => {
       .catch((err) => console.log(err));
   };
 
-  // console.log('admin? ', userCtx.user.admin)
-  const handleLogout = () => {
-    axios({
-      method: 'delete',
-      url: 'http://localhost:3000/auth/logout',
-      withCredentials: true,
-    }).then(res => {
-      if (res.status === 200) {
-        userCtx.setUser({});
-        localStorage.removeItem('User');
-        console.log(res.data);
-      }
-    })
-    .catch(err => console.log(err));
-  }
+
+  console.log(userCtx.user);
 
   return (
-    <>
-    <form className="form" onSubmit={handleLogin}>
-      <input type="email" name="email" className="input" placeholder="Email" />
-      <input type="password" name="password" className="input" placeholder="Password" autoComplete="off" />
-      <input type="submit" className="button" />
-    </form>
+    <div className="form-container has-text-centered">
+      <h2 className="title is-3 is-centered">Login</h2>
+      <form className="form" onSubmit={handleLogin}>
+        <input type="email" name="email" className="input" placeholder="Email" />
+        <input type="password" name="password" className="input" placeholder="Password" autoComplete="off" />
+        <input type="submit" className="button" value="Login" />
+      </form>
 
-    <button onClick={handleLogout}>logout</button>
-    </>
+      <div>
+        Don&apos;t have an account?
+        <Link to="/signup"> Sign up!</Link>
+      </div>
+    </div>
   );
 };
 

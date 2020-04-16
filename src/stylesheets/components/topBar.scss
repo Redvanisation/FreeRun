@@ -63,6 +63,14 @@
     }
   }
 
+  &__logout {
+    background-color: transparent;
+    border: none;
+    color: $color-white;
+    font-size: inherit;
+    cursor: pointer;
+  }
+
 }
 
 
