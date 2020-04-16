@@ -9,8 +9,8 @@ const Login = () => {
 
 
   const loginRedirect = (ctx, res) => {
-    ctx.setUser(res.data);
-    if (ctx.user) {
+    ctx.setCookie('user', res.data);
+    if (ctx.cookies.user) {
       history.push('/');
     }
   };
@@ -30,7 +30,7 @@ const Login = () => {
   };
 
 
-  console.log(userCtx.user);
+  console.log(userCtx.cookies);
 
   return (
     <div className="form-container has-text-centered">

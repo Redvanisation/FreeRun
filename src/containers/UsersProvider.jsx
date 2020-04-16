@@ -1,19 +1,20 @@
 import React, { createContext } from 'react';
 import PropTypes from 'prop-types';
-// import useSessionStorage from '../hooks/useSessionStorage';
-import useLocalStorage from '../hooks/useLocalStorage';
+import { useCookies } from 'react-cookie';
+
 
 export const UserContext = createContext(null);
 
 const UsersProvider = ({ children }) => {
-  const [user, setUser] = useLocalStorage('user', {});
+  const [cookies, setCookie, removeCookie] = useCookies(['user']);
 
 
   return (
     <UserContext.Provider
       value={{
-        user,
-        setUser,
+        cookies,
+        setCookie,
+        removeCookie,
       }}
     >
       {children}

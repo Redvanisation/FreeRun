@@ -12,6 +12,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-bulma-components": "3.2.0",
+    "react-cookie": "^4.0.3",
     "react-dom": "^16.13.1",
     "react-icons": "^3.9.0",
     "react-paypal-button-v2": "^2.6.1",

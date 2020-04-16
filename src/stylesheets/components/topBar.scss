@@ -2,6 +2,16 @@
   background-color: $color-secondary;
   z-index: 900 !important;
 
+  &__user-div {
+    color: $color-white;
+    font-size: .9rem;
+    margin: .5rem 2rem;
+
+    &--text {
+
+    }
+  }
+
   &__item {
 
     &:hover,
@@ -76,7 +86,11 @@
 
 @media only screen and (max-width: 1023px) {
   .top-bar {
-  
+    
+    &__user-div {
+      color: $color-secondary;
+    }
+
     &__item {
       text-align: center;
     }
