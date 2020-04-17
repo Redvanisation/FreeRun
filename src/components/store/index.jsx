@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { formatPrice } from '../../helpers';
+import { formatPrice, baseUrl } from '../../helpers';
 import SearchBar from '../SearchBar';
 
 
@@ -14,16 +14,26 @@ const Store = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      // const response = await axios.get('http://localhost:3000/api/products');
-      const response = await axios.get('https://free-run-api.herokuapp.com/api/products');
+      const response = await axios.get(`${baseUrl}api/products`, {
+        withCredentials: true,
+      });
+
       setProducts(response.data);
     };
 
     fetchData();
+
+    return (() => {
+      setProducts({});
+    });
   }, []);
 
-  const filteredProducts = products.filter((product) => product.name.toLowerCase()
-    .indexOf(search.toLowerCase()) !== -1);
+  const filteredProducts = products.filter((product) => {
+    if (search.toLowerCase() === 'all') {
+      return products;
+    }
+    return product.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+  });
 
 
   return (

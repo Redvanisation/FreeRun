@@ -1,25 +1,25 @@
 import React, { useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import Layout from '../containers/Layout';
-import CreateProduct from '../components/CreateProduct';
 import { UserContext } from '../containers/UsersProvider';
+import Layout from '../containers/Layout';
+import Signup from '../components/Signup';
 
-const AddProductPage = () => {
+const SignupPage = () => {
   const userCtx = useContext(UserContext);
   const history = useHistory();
 
+
   useEffect(() => {
-    if (!userCtx.cookies.user || !userCtx.cookies.user.admin) {
+    if (userCtx.cookies.user) {
       history.push('/');
     }
   });
 
-
   return (
-    <Layout title="Add Product">
-      <CreateProduct />
+    <Layout title="Signup">
+      <Signup />
     </Layout>
   );
 };
 
-export default AddProductPage;
+export default SignupPage;

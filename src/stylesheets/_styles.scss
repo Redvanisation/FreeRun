@@ -6,6 +6,10 @@ html {
   box-sizing: border-box;
 }
 
+body {
+  overflow: hidden !important;
+}
+
 .wrapper {
   width: 100vw;
 }
@@ -59,6 +63,7 @@ html {
 .subtitle::first-letter {
   text-transform: capitalize;
 }
+
 
 hr {
   width: 80%;

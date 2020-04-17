@@ -1,10 +1,11 @@
 import React, { useEffect, useContext } from 'react';
+import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import Layout from '../containers/Layout';
-import CreateProduct from '../components/CreateProduct';
+import UpdateProduct from '../components/UpdateProduct';
 import { UserContext } from '../containers/UsersProvider';
 
-const AddProductPage = () => {
+const UpdateProductPage = ({ location }) => {
   const userCtx = useContext(UserContext);
   const history = useHistory();
 
@@ -14,12 +15,15 @@ const AddProductPage = () => {
     }
   });
 
-
   return (
     <Layout title="Add Product">
-      <CreateProduct />
+      <UpdateProduct location={location} />
     </Layout>
   );
 };
 
-export default AddProductPage;
+UpdateProductPage.propTypes = {
+  location: PropTypes.instanceOf(Object).isRequired,
+};
+
+export default UpdateProductPage;

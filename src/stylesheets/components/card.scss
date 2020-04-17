@@ -4,14 +4,14 @@
 
 .card {
   margin-top: 2rem;
-  height: 510px;
-  max-height: 550px;
   padding: 1rem;
   padding-top: 3rem;
+  min-height: 420px;
 }
 
 .card-image {
   height: 50%;
+  margin: 0 auto;
 }
 
 .card-content {
@@ -35,5 +35,14 @@
   .card {
     height: 400px;
     max-height: 500px;
+  }
+
+  .card-image {
+    height: 50%;
+    max-width: 60%;
+  }
+
+  .card-content {
+    padding: 2rem 0 0 !important;
   }
 }

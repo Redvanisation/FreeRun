@@ -5,6 +5,17 @@
     padding: 8rem;
   }
 
+  &__admin-buttons-div {
+    margin-bottom: 1rem;
+    
+    &--button {
+      display: inline-block;
+      &:not(:last-child) {
+        margin-right: 1rem;
+      }
+    }
+  }
+
   &__text-div {
 
     &--item {
