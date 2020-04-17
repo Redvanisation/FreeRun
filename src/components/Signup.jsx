@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { baseUrl } from '../helpers';
 
 const Signup = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const history = useHistory();
 
   const handleSignup = (e) => {
     e.preventDefault();
@@ -19,7 +20,11 @@ const Signup = () => {
         url: `${baseUrl}auth/register`,
         data,
       })
-        .then((res) => console.log(res))
+        .then((res) => {
+          if (res.status === 201) {
+            history.push('/auth');
+          }
+        })
         .catch((err) => console.log(err));
     }
     e.target.reset();
