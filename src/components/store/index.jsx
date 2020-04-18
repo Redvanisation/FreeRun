@@ -14,9 +14,7 @@ const Store = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`${baseUrl}api/products`, {
-        withCredentials: true,
-      });
+      const response = await axios.get(`${baseUrl}api/products`);
 
       setProducts(response.data);
     };
