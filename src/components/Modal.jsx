@@ -11,7 +11,7 @@ import { UserContext } from '../containers/UsersProvider';
 export const ModalContext = createContext(null);
 
 const Modal = ({ children }) => {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const [type, setType] = useState('initial');
   const [product, setProduct] = useState({});
   const userCtx = useContext(UserContext);
