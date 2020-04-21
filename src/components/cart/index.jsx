@@ -87,7 +87,7 @@ const Cart = ({ history }) => {
   const success = () => {
     cartCtx.clearCart();
     setOrderItems([]);
-    // history.push('/');
+    history.push('/');
   };
 
   const notify = () => toast('Transaction completed successfully!', {
