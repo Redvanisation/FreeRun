@@ -23,6 +23,17 @@
       margin-bottom: 3rem !important;
     }
   }
+
+  &__btns-div {
+    display: flex;
+    justify-content: center;
+
+    &--btn {
+      &:not(:last-child) {
+        margin-right: 1rem;
+      }
+    }
+  }
 }
 
 
@@ -32,6 +43,18 @@
     padding: 1rem;
     &__image-div {
       padding: 3rem;
+    }
+
+    &__btns-div {
+      display: flex;
+      flex-direction: column;
+      
+      &--btn {
+        &:not(:last-child) {
+          margin-right: 0;
+          margin-bottom: 1rem;
+        }
+      }
     }
   }
 }

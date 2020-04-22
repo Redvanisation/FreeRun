@@ -53,16 +53,23 @@ const SingleProduct = ({ product }) => {
           <span className="subtitle is-bold">Stock: </span>
           {product.stock > 0 ? product.stock : 'OUT OF STOCK'}
         </p>
-        {
-          (product.stock <= 0) || checkItem(cartCtx, product) ? null
-            : (
-              <div>
-                <button className="button" type="button" onClick={() => handleClick(cartCtx, product, modalCtx)}>
+        <div className="single-product__btns-div">
+          {
+            userCtx.cookies.user
+              ? (
+                <button type="button" className="button single-product__btns-div--btn">Add to Wishlist</button>
+              )
+              : null
+          }
+          {
+            (product.stock <= 0) || checkItem(cartCtx, product) ? null
+              : (
+                <button type="button" className="button single-product__btns-div--btn" onClick={() => handleClick(cartCtx, product, modalCtx)}>
                   Add to cart
                 </button>
-              </div>
-            )
-        }
+              )
+          }
+        </div>
       </div>
     </div>
   );
