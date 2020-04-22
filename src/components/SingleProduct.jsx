@@ -13,9 +13,9 @@ const SingleProduct = ({ product }) => {
   const userCtx = useContext(UserContext);
 
 
-  const handleClick = (ctx, item, modal) => {
-    ctx.addToCart(item);
-    modal.setType('product');
+  const handleAdd = (action, type, item, modal) => {
+    action(item);
+    modal.setType(type);
     modal.setShow(true);
   };
 
@@ -71,14 +71,14 @@ const SingleProduct = ({ product }) => {
           {
             userCtx.cookies.user
               ? (
-                <button type="button" className="button single-product__btns-div--btn" onClick={() => addToWishlist(product)}>Add to Wishlist</button>
+                <button type="button" className="button single-product__btns-div--btn" onClick={() => handleAdd(addToWishlist, 'wishlist', product, modalCtx)}>Add to Wishlist</button>
               )
               : null
           }
           {
             (product.stock <= 0) || checkItem(cartCtx, product) ? null
               : (
-                <button type="button" className="button single-product__btns-div--btn" onClick={() => handleClick(cartCtx, product, modalCtx)}>
+                <button type="button" className="button single-product__btns-div--btn" onClick={() => handleAdd(cartCtx.addToCart, 'product', product, modalCtx)}>
                   Add to cart
                 </button>
               )
