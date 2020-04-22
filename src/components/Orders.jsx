@@ -17,9 +17,8 @@ const Orders = () => {
     })
       .then((res) => setOrders(res.data))
       .catch((err) => console.log(err));
-  }, []);
+  }, [userCtx.cookies.user.user_id]);
 
-  console.log(orders);
   return (
     <div className="container has-text-centered orders">
       <h2 className="title is-3">Orders History</h2>

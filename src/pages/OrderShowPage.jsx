@@ -18,7 +18,7 @@ const OrderShowPage = ({ location }) => {
     ?user_id=${userCtx.cookies.user.user_id}`)
       .then((res) => setOrderProducts(res.data.products))
       .catch((err) => console.log(err));
-  }, []);
+  }, [location.order.id, userCtx.cookies.user.user_id]);
 
 
   const formatOrdersProducts = () => (

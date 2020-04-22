@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import { CartContext } from './cart/CartProv';
-import { formatPrice } from '../helpers';
+import { formatPrice, baseUrl } from '../helpers';
 import { ModalContext } from './Modal';
 import { UserContext } from '../containers/UsersProvider';
 
@@ -24,6 +25,19 @@ const SingleProduct = ({ product }) => {
     modal.setShow(true);
     modal.setProduct(item);
     modal.setType('delete');
+  };
+
+  const addToWishlist = (item) => {
+    axios({
+      method: 'post',
+      url: `${baseUrl}api/wishlist`,
+      data: {
+        wished_product_id: item.id,
+        user_id: userCtx.cookies.user.user_id,
+      },
+      withCredentials: true,
+    })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -57,7 +71,7 @@ const SingleProduct = ({ product }) => {
           {
             userCtx.cookies.user
               ? (
-                <button type="button" className="button single-product__btns-div--btn">Add to Wishlist</button>
+                <button type="button" className="button single-product__btns-div--btn" onClick={() => addToWishlist(product)}>Add to Wishlist</button>
               )
               : null
           }

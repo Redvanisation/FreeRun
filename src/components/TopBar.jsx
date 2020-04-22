@@ -115,6 +115,12 @@ const TopBar = () => {
                 </div>
 
                 <div className="top-bar__link-div">
+                  <Link to="/wishlist" className="top-bar__link is-bold">
+                    Wishlist
+                  </Link>
+                </div>
+
+                <div className="top-bar__link-div">
                   <Link to="/" className="top-bar__link is-bold" onClick={handleLogout}>
                     Logout
                   </Link>
