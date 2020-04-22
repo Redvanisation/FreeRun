@@ -1,0 +1,39 @@
+.orders {
+  padding: 2rem;
+  padding-top: 5rem;
+
+  &__order {
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px 2px rgba($color-black, .1);
+    cursor: pointer;
+    transition: transform .2s;
+    
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    &--link:link,
+    &--link:visited {
+      color: $color-blue-light;
+      font-weight: bold;
+    }
+  }
+
+  &__products-div {
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px 2px rgba($color-black, .1);
+
+  }
+
+  &__product {
+    margin: .5rem;
+    margin-bottom: 1rem;
+    
+    &--title {
+      display: block;
+      margin-bottom: .2rem;
+    }
+  }
+}

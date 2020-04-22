@@ -3,5 +3,5 @@ export const formatPrice = (price) => (
 );
 
 
-export const baseUrl = 'https://free-run-api.herokuapp.com/';
-// export const baseUrl = 'http://localhost:3000/';
+// export const baseUrl = 'https://free-run-api.herokuapp.com/';
+export const baseUrl = 'http://localhost:3000/';

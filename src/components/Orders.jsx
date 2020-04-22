@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { UserContext } from '../containers/UsersProvider';
-import { baseUrl } from '../helpers';
-import ProductsPage from '../pages/ProductsPage';
+import { baseUrl, formatPrice } from '../helpers';
+
 
 const Orders = () => {
   const userCtx = useContext(UserContext);
@@ -20,29 +21,30 @@ const Orders = () => {
 
   console.log(orders);
   return (
-    <div>
+    <div className="container has-text-centered orders">
+      <h2 className="title is-3">Orders History</h2>
       {
         orders
           ? orders.map((order) => (
-            <div key={order.id}>
-              <p>
-                Total Paid:
-                {order.total}
-              </p>
-              <p>
-                Status:
-                {order.delivered}
-              </p>
-
-              <div>
-                {/* {ProductsPage.map(product => (
-                  <ul>
-                    <li>{product.name}</li>
-                    <li>{product.price}</li>
-                  </ul>
-                ))} */}
-                {order.products}
-              </div>
+            <div className="orders__order" key={order.id}>
+              <Link className="orders__order--link" to={{ pathname: `/orders/${order.id}`, order }}>
+                <p>
+                  <span className="title is-6">Order Number:&nbsp;</span>
+                  {order.id}
+                </p>
+                <p>
+                  <span className="title is-6">Total Paid:&nbsp;</span>
+                  {formatPrice(order.total)}
+                </p>
+                <p>
+                  <span className="title is-6">Status:&nbsp;</span>
+                  {order.delivered ? 'Yes' : 'Not yet'}
+                </p>
+                <time dateTime={order.updated_at}>
+                  <span className="title is-6">Date:&nbsp;</span>
+                  {order.updated_at}
+                </time>
+              </Link>
             </div>
           ))
           : 'NOTHING!'
