@@ -51,7 +51,7 @@ FreeRun e-commerce website
 * [Contributing](#contributing)
 * [License](#license)
 * [Contact](#contact)
-* [Future Implementations](#future-implementations)
+<!-- * [Future Implementations](#future-implementations) -->
 
 
 
@@ -108,7 +108,7 @@ cd freerun
 ```sh
 yarn install
 ```
-4. Run the development server with only one of the below commands
+3. Run the development server with only one of the below commands
 ```sh
 yarn start
 ```
