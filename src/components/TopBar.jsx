@@ -98,19 +98,35 @@ const TopBar = () => {
               : null
           }
 
-          <div className="top-bar__link-div">
-            { (!userCtx.cookies.user)
-              ? (
+          { (!userCtx.cookies.user)
+            ? (
+              <div className="top-bar__link-div">
                 <Link to="/auth" className="top-bar__link is-bold">
                   Login
                 </Link>
-              )
-              : (
-                <Link to="/" className="top-bar__link is-bold" onClick={handleLogout}>
-                  Logout
-                </Link>
-              )}
-          </div>
+              </div>
+            )
+            : (
+              <>
+                <div className="top-bar__link-div">
+                  <Link to="/orders" className="top-bar__link is-bold">
+                    Orders
+                  </Link>
+                </div>
+
+                <div className="top-bar__link-div">
+                  <Link to="/wishlist" className="top-bar__link is-bold">
+                    Wishlist
+                  </Link>
+                </div>
+
+                <div className="top-bar__link-div">
+                  <Link to="/" className="top-bar__link is-bold" onClick={handleLogout}>
+                    Logout
+                  </Link>
+                </div>
+              </>
+            )}
         </Navbar.Container>
       </Navbar.Menu>
     </Navbar>

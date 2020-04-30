@@ -4,6 +4,7 @@ import { PayPalButton } from 'react-paypal-button-v2';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { CartContext } from './CartProv';
+import { UserContext } from '../../containers/UsersProvider';
 import { formatPrice, baseUrl } from '../../helpers';
 import Quantity from '../Quantity';
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,15 +12,18 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Cart = ({ history }) => {
   const cartCtx = useContext(CartContext);
+  const userCtx = useContext(UserContext);
 
   // const [isLoading, setIsLoading] = useState(false);
   const [subtotal, setSubtotal] = useState(0);
   const [tax, setTax] = useState(0);
   const [total, setTotal] = useState(0);
+  const [orderItems, setOrderItems] = useState([]);
 
 
   const updateItemStock = (item) => {
     // setIsLoading(true);
+    setOrderItems(orderItems.push(item.id));
 
     axios({
       method: 'put',
@@ -40,6 +44,25 @@ const Cart = ({ history }) => {
     cart.forEach((item) => {
       updateItemStock(item);
     });
+  };
+
+  const saveUsersOrders = (cart, user, price) => {
+    if (user.cookies.user) {
+      axios({
+        method: 'post',
+        url: `${baseUrl}api/orders`,
+        data: {
+          user_id: user.cookies.user.user_id,
+          total: price,
+          paid: true,
+          delivered: false,
+          product_ids: orderItems,
+        },
+        withCredentials: true,
+      })
+        .then((res) => console.log(res))
+        .then((err) => console.log(err));
+    }
   };
 
   const calculateSubtotal = (items) => {
@@ -63,6 +86,7 @@ const Cart = ({ history }) => {
 
   const success = () => {
     cartCtx.clearCart();
+    setOrderItems([]);
     history.push('/');
   };
 
@@ -126,6 +150,7 @@ const Cart = ({ history }) => {
               shippingPreference="NO_SHIPPING"
               onSuccess={() => {
                 updateCartStock(cartCtx.cart);
+                saveUsersOrders(cartCtx, userCtx, total);
                 notify();
               }}
               // onCancel={() => {

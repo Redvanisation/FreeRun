@@ -10,6 +10,9 @@ import AddProductPage from './pages/AddProductPage';
 import UpdateProductPage from './pages/UpdateProductPage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
+import OrdersPage from './pages/OrdersPage';
+import OrderShowPage from './pages/OrderShowPage';
+import WishlistPage from './pages/WishlistPage';
 import 'bulma';
 import './stylesheets/main.scss';
 import Modal from './components/Modal';
@@ -25,6 +28,9 @@ ReactDOM.render(
             <Route exact path="/cart" component={CartPage} />
             <Route exact path="/add" component={AddProductPage} />
             <Route exact path="/update" component={UpdateProductPage} />
+            <Route exact path="/orders" component={OrdersPage} />
+            <Route exact path="/orders/:id" component={OrderShowPage} />
+            <Route exact path="/wishlist" component={WishlistPage} />
           </Modal>
           <Route exact path="/auth" component={LoginPage} />
           <Route exact path="/signup" component={SignupPage} />

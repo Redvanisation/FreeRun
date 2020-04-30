@@ -28,6 +28,11 @@ const Modal = ({ children }) => {
     history.push('/cart');
   };
 
+  const redirectToWishlist = () => {
+    setShow(false);
+    history.push('/wishlist');
+  };
+
   const deleteProduct = (item) => {
     if (item) {
       axios({
@@ -70,6 +75,19 @@ const Modal = ({ children }) => {
             <div className="modal__div--btns-container">
               <button className="button is-uppercase modal__div--btn-confirm" type="button" onClick={redirectHome}>Go to catalogue</button>
               <button className="button is-uppercase modal__div--btn-confirm" type="button" onClick={redirectToCart}>Go to cart</button>
+            </div>
+          </>
+        );
+
+      case 'wishlist':
+        return (
+          <>
+            <div className="modal__div--message">
+              <p className="modal__div--message is-bold">PRODUCT ADDED TO WISHLIST</p>
+            </div>
+            <div className="modal__div--btns-container">
+              <button className="button is-uppercase modal__div--btn-confirm" type="button" onClick={redirectHome}>Go to catalogue</button>
+              <button className="button is-uppercase modal__div--btn-confirm" type="button" onClick={redirectToWishlist}>Go to wishlist</button>
             </div>
           </>
         );
