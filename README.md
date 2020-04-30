@@ -19,8 +19,8 @@ FreeRun e-commerce website
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/redvanisation/Tech-Talks">
-    <img src="./public/screenshot-1.png" alt="Logo" width="860" height="460">
+  <a href="https://github.com/Redvanisation/FreeRun">
+    <img src="./public/screenshot1.png" alt="Logo" width="860" height="460">
   </a>
 
   <h2 align="center">FREE RUN</h2>
@@ -58,7 +58,7 @@ FreeRun e-commerce website
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://tech--talks.herokuapp.com/)
+[![Product Name Screen Shot][product-screenshot]](https://objective-payne-c9a208.netlify.app/)
 
 This project is a **PROTOTYPE** of a real e-commerce that I have previously developed, it's a full-stack mobile responsive app with a **React** front-end and a **Ruby on Rails API** back-end with **AWS S3** for images' storage via **active storage**, it has a PayPal checkout integration and the cart is saved in the browser's local storage. This is the front-end repo and you could find the back-end code on [https://github.com/Redvanisation/FreeRunAPI](https://github.com/Redvanisation/FreeRunAPI).
 
@@ -169,4 +169,4 @@ Distributed under the MIT License. See `LICENSE` for more information.
 [issues-url]: https://github.com/Redvanisation/FreeRun/issues
 [license-shield]: https://img.shields.io/github/license/Redvanisation/FreeRun
 [license-url]: https://github.com/Redvanisation/FreeRun/blob/develop/LICENSE
-[product-screenshot]: ./public/screenshot-2.png
+[product-screenshot]: ./public/screenshot2.png
