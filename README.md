@@ -118,12 +118,15 @@ yarn start
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-- On the website you will fin a list of products, clicking on each product will take you to its page which has an **add to cart** button that adds the product to the cart if the stock is more than 0 and the button is visible.
+- On the website you will fin a list of products, as a **guest user** clicking on each product will take you to its page which has an **add to cart** button that adds the product to the cart if the stock is more than 0 and the button is visible.
+- As a **regular user**(logged in user) by clicking on a product it would take you to its page which would have an additional **add to wishlist** button which would add the product to the user's wishlist where you can view or delete products from it.
+- The **admin user** has the ability to add products from the menu bar, as well as updating or removing them (available from every single product's page).
 - Once on the cart you can increase or decrease each product's quantity or remove it from the cart, you can also empty the whole cart or pay with the **PayPal checkout** button.
 - By clicking the **PayPal checkout** button a window will pop-up that uses **PayPal sandbox** (mocking the real payment features) you can copy/paste the following credentials to test the payment functionality and how the app handles it:
  - PayPal Sandbox Email: `sb-3sfev1297483@personal.example.com`
  - PayPal Sandbox Password: `Vp?7l8an`
 - After the payment you will be redirected to the home page and each quantity you bought will be deducted from the product's stock.
+- As a **regular user** you will also have the ability to view your previous orders and the history of the purchased products in every order.
 
 
 
